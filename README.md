@@ -55,27 +55,6 @@
     h2 {
       color: #FF0000;
     }
-        /* تصميم جديد لمربع النتيجة */
-    .result-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 30px;
-    }
-    .result-box {
-      background-color: #ffeb3b;
-      border: 2px solid #0078bd;
-      color: #000;
-      padding: 20px 30px;
-      border-radius: 15px;
-      text-align: center;
-      font-size: 22px;
-      font-weight: bold;
-      min-width: 200px;
-    }
-    .result-label {
-      color: #0078bd;
-    }
   </style>
 </head>
 <body>
@@ -265,7 +244,7 @@
     q16: "ب", q17: "ب", q18: "ب", q19: "ب", q20: "ب"
   };
 
-    function showResult() {
+  function showResult() {
     let score = 0;
     for (let q in answers) {
       const selected = document.querySelector(`input[name="${q}"]:checked`);
@@ -283,7 +262,6 @@
       result.className = "result fail";
     }
   }
-</script>
-
+<script>
 </body>
 </html>
