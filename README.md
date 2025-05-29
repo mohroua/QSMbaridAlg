@@ -266,28 +266,23 @@
   };
 
     function showResult() {
-  let score = 0;
-  const totalQuestions = Object.keys(answers).length;
+    let score = 0;
+    for (let q in answers) {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      if (selected && selected.value === answers[q]) {
+        score++;
+      }
+    }
 
-  for (let q in answers) {
-    const selected = document.querySelector(`input[name="${q}"]:checked`);
-    if (selected && selected.value === answers[q]) {
-      score++;
+    const result = document.getElementById("result");
+    if (score >= 10) {
+      result.innerHTML = `✔️ نتيجتك: ${score}/20 - ناجح`;
+      result.className = "result success";
+    } else {
+      result.innerHTML = `❌ نتيجتك: ${score}/20 - راسب`;
+      result.className = "result fail";
     }
   }
-
-  const result = document.getElementById("result");
-  const grade = Math.round((score / totalQuestions) * 20); // تحويل إلى من 20
-
-  if (grade >= 10) {
-    result.innerHTML = `✔️ نتيجتك: ${grade}/20 - ناجح`;
-    result.className = "result success";
-  } else {
-    result.innerHTML = `❌ نتيجتك: ${grade}/20 - راسب`;
-    result.className = "result fail";
-  }
-}
-
 </script>
 
 </body>
