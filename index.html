@@ -62,7 +62,7 @@
   <div class="header">
     <img src="https://i.postimg.cc/8ChN66JP/Merged-Images.png" alt="شعار بريد الجزائر">
     <h1 class="title">اختبار بريد الجزائر الرقمي</h1>
-      <h2>ملاحظة: هذا عبارة عن إختبار تجريبي</h2>
+        <h2>ملاحظة: هذا عبارة عن إختبار تجريبي</h2>
   <!-- الأسئلة -->
  <div class="question">
     <p>1. زبون فقد بطاقته الذهبية، ما هي أول خطوة يقوم بها؟</p>
@@ -224,17 +224,11 @@
   <label><input type="radio" name="q20" value="د"> د) البريدية تُرسل فقط في الخارج</label>
 </div>
     
-  <!-- زر عرض النتيجة -->
-  <div style="text-align: center; margin-top: 20px;">
-    <button type="button" onclick="showResult()">عرض النتيجة</button>
-  </div>
 
-  <!-- مربع النتيجة الجديد -->
-  <div class="result-container">
-    <div class="result-box">
-      <span class="result-label">النتيجة:</span> <span id="resultScore">0/10</span>
-    </div>
-  </div>
+  <button type="button" onclick="showResult()">عرض النتيجة</button>
+</form>
+
+<div class="result" id="result"></div>
 
 <script>
   const answers = {
@@ -262,6 +256,7 @@
       result.className = "result fail";
     }
   }
-<script>
+</script>
+
 </body>
 </html>
