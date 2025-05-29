@@ -265,26 +265,22 @@
     q16: "ب", q17: "ب", q18: "ب", q19: "ب", q20: "ب"
   };
 
+    function showResult() {
+    let score = 0;
+    for (let q in answers) {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      if (selected && selected.value === answers[q]) {
+        score++;
+      }
+    }
+
     const result = document.getElementById("result");
     if (score >= 10) {
-      function showResult() {
-      let score = 0;
-      for (let q in answers) {
-        const selected = document.querySelector(`input[name="${q}"]:checked`);
-        if (selected && selected.value === answers[q]) {
-          score++;
-        }
-      }
-
-      // تحديث النتيجة في المربع الأصفر
-      document.getElementById("resultScore").textContent = `${score}/10`;
-      result.innerHTML = `✅ نتيجتك: ${score}/20 - ناجح`;
+      result.innerHTML = `✔️ نتيجتك: ${score}/20 - ناجح`;
       result.className = "result success";
     } else {
       result.innerHTML = `❌ نتيجتك: ${score}/20 - راسب`;
       result.className = "result fail";
-    }
-  }
 </script>
 
 </body>
