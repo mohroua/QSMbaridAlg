@@ -52,6 +52,23 @@
       margin: 4px 0;
       cursor: pointer;
     }
+    .result {
+      text-align: center;
+      font-size: 20px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 25px;
+      font-size: 18px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      }
     h2 {
       color: #FF0000;
     }
