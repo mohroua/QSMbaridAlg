@@ -254,11 +254,11 @@
     }
 
     const result = document.getElementById("result");
-    if (score >= 10) {
-      result.innerHTML = `✔️ نتيجتك: ${score}/20 - ناجح`;
+    if (score >= 5) {
+      result.innerHTML = `✔️ نتيجتك: ${score}/10 - ناجح`;
       result.className = "result success";
     } else {
-      result.innerHTML = `❌ نتيجتك: ${score}/20 - راسب`;
+      result.innerHTML = `❌ نتيجتك: ${score}/10 - راسب`;
       result.className = "result fail";
     }
   }
