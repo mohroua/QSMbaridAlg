@@ -11,40 +11,162 @@
   <style>
 
     body {
-  font-family: 'Arial', sans-serif;
+
+      font-family: Arial, sans-serif;
+
+      background-color: #f9f9f9;
+
+      margin: 0;
+
+      padding: 0;
+
+    }
+
+  .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 60px;
   background-color: #fff;
+  border-bottom: 1px solid #ccc;
   direction: rtl;
-  text-align: center;
 }
 
-.container {
-  margin: 50px auto;
-  max-width: 500px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-}
-
-.logo {
-  width: 80px;
-  margin-bottom: 10px;
-}
-
-#choices button {
-  display: block;
-  margin: 10px auto;
-  padding: 10px;
-  width: 80%;
-}
-
-#timer {
-  color: red;
+.header-title {
+  font-size: 22px;
   font-weight: bold;
+  color: #333;
 }
 
-.buttons {
-  margin-top: 20px;
+.header-logo {
+  height: 50px;
 }
+
+
+
+    .content {
+
+      text-align: center;
+
+      padding: 30px;
+
+    }
+
+    .box {
+
+      background-color: #fff;
+
+      border: 1px solid #ddd;
+
+      border-radius: 15px;
+
+      padding: 20px;
+
+      display: inline-block;
+
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+    }
+
+    .status {
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      margin: 10px 0;
+
+    }
+
+    .status span {
+
+      background-color: #f0f0f0;
+
+      border-radius: 10px;
+
+      padding: 5px 10px;
+
+      margin-right: 10px;
+
+    }
+
+    .status .orange {
+
+      background-color: orange;
+
+      color: white;
+
+    }
+
+    button {
+
+      padding: 10px 20px;
+
+      margin-top: 20px;
+
+      font-size: 18px;
+
+      border: none;
+
+      border-radius: 10px;
+
+      background-color: #ddd;
+
+      cursor: pointer;
+
+    }
+
+
+
+    #exam-section {
+
+      display: none;
+
+      padding: 20px;
+
+    }
+
+
+
+    .question {
+
+      font-size: 20px;
+
+      font-weight: bold;
+
+    }
+
+    label {
+
+      display: block;
+
+      margin: 8px 0;
+
+    }
+
+    .hidden {
+
+      display: none;
+
+    }
+
+    #timer {
+
+      font-weight: bold;
+
+      color: red;
+
+      margin: 10px 0;
+
+    }
+
+    #nav-buttons {
+
+      margin-top: 15px;
+
+    }
 
   </style>
 
