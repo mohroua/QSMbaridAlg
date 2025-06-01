@@ -51,8 +51,8 @@
 
       background-color: #fff;
       border: 1px solid #ddd;
-      border-radius: 45px;
-      padding: 60px;
+      border-radius: 15px;
+      padding: 20px;
       display: inline-block;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
@@ -116,7 +116,7 @@
     label {
 
       display: block;
-      margin: 8px 0;
+      margin: 20px 0;
 
     }
 
