@@ -14,7 +14,7 @@
 
       font-family: Arial, sans-serif;
 
-      background-color: #f9f9f9;
+      background-color: #fffff;
 
       margin: 0;
 
@@ -34,21 +34,21 @@
     .logo-title {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 80px;
     }
 
     .logo {
-      width: 40px;
-      height: 40px;
+      width: 80px;
+      height: 80px;
     }
 
     .center-name {
-      font-size: 20px;
+      font-size: 40px;
       font-weight: bold;
     }
 
     .close-btn {
-      font-size: 24px;
+      font-size: 30px;
       color: red;
       background: none;
       border: none;
@@ -58,7 +58,7 @@
     /* قسم اللغة */
     .language-select {
       background-color: #f9f9f9;
-      padding: 10px 20px;
+      padding: 10px 80px;
       text-align: right;
       border-bottom: 1px solid #ccc;
     }
@@ -72,7 +72,7 @@
 
       text-align: center;
 
-      padding: 30px;
+      padding: 60px;
 
     }
 
@@ -82,9 +82,9 @@
 
       border: 1px solid #ddd;
 
-      border-radius: 15px;
+      border-radius: 30px;
 
-      padding: 20px;
+      padding: 40px;
 
       display: inline-block;
 
@@ -126,11 +126,11 @@
 
     button {
 
-      padding: 10px 20px;
+      padding: 20px 40px;
 
-      margin-top: 20px;
+      margin-top: 40px;
 
-      font-size: 18px;
+      font-size: 36px;
 
       border: none;
 
@@ -148,7 +148,7 @@
 
       display: none;
 
-      padding: 20px;
+      padding: 50px;
 
     }
 
@@ -156,7 +156,7 @@
 
     .question {
 
-      font-size: 20px;
+      font-size: 50px;
 
       font-weight: bold;
 
@@ -166,7 +166,7 @@
 
       display: block;
 
-      margin: 8px 0;
+      margin: 16px 0;
 
     }
 
