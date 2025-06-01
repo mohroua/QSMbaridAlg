@@ -15,22 +15,17 @@
       color: #222;
     }
     
-  .header {
-    display: flex;
-    align-items: center;
-    padding: 20px 30px;
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
-    font-size: 24px;
-    font-weight: bold;
-    justify-content: flex-start; /* تغيير من space-between إلى flex-start */
+.header {
+      text-align: right;
+      margin-bottom: 30px;
+    }
+    .header img {
+      width: 50px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 30px;
   }
-
-  .header img {
-    height: 50px;
-    margin-inline-start: auto; /* يدفع الصورة لأقصى اليسار في RTL */
-  }
-  
     .content {
       text-align: center;
       padding: 40px 20px; /* زيادة الحشوة */
