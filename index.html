@@ -1,199 +1,84 @@
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <title>مركز الامتحان - بريد الجزائر</title>
-
+  <title>الهيدر</title>
   <style>
-
     body {
-
-      font-family: Arial, sans-serif;
-
-      background-color: #f9f9f9;
-
       margin: 0;
-
-      padding: 0;
-
+      font-family: Arial, sans-serif;
+      direction: rtl;
     }
 
-  .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 15px;
-  background-color: #fff;
-  border-bottom: 1px solid #ccc;
-  direction: rtl;
-}
-
-.header-title {
-  font-size: 22px;
-  font-weight: bold;
-  color: #333;
-}
-
-.header-logo {
-  height: 50px;
-}
-
-
-
-    .content {
-
-      text-align: center;
-
-      padding: 30px;
-
-    }
-
-    .box {
-
-      background-color: #fff;
-
-      border: 1px solid #ddd;
-
-      border-radius: 15px;
-
-      padding: 20px;
-
-      display: inline-block;
-
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-
-    }
-
-    .status {
-
-      display: flex;
-
-      justify-content: center;
-
-      align-items: center;
-
-      margin: 10px 0;
-
-    }
-
-    .status span {
-
-      background-color: #f0f0f0;
-
-      border-radius: 10px;
-
-      padding: 5px 10px;
-
-      margin-right: 10px;
-
-    }
-
-    .status .orange {
-
-      background-color: orange;
-
-      color: white;
-
-    }
-
-    button {
-
+    .header {
+      background-color: #f2f2f2;
       padding: 10px 20px;
-
-      margin-top: 20px;
-
-      font-size: 18px;
-
-      border: none;
-
-      border-radius: 10px;
-
-      background-color: #ddd;
-
-      cursor: pointer;
-
+      border-bottom: 2px solid #ccc;
     }
 
-
-
-    #exam-section {
-
-      display: none;
-
-      padding: 20px;
-
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
+    .right-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
+    .logo {
+      width: 40px;
+      height: 40px;
+    }
 
-    .question {
-
+    .center-name {
       font-size: 20px;
-
       font-weight: bold;
-
     }
 
-    label {
-
-      display: block;
-
-      margin: 8px 0;
-
-    }
-
-    .hidden {
-
-      display: none;
-
-    }
-
-    #timer {
-
-      font-weight: bold;
-
+    .close-btn {
+      font-size: 24px;
       color: red;
-
-      margin: 10px 0;
-
+      background: none;
+      border: none;
+      cursor: pointer;
     }
 
-    #nav-buttons {
-
-      margin-top: 15px;
-
+    .language-selector {
+      margin-top: 10px;
     }
 
+    select {
+      padding: 5px;
+      font-size: 14px;
+    }
   </style>
-
 </head>
-
 <body>
 
   <div class="header">
-  <div class="header-title">مركز الامتحان</div>
-  <img class="header-logo" src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo">
-</div>
-
-
-
-  <div class="content" id="welcome-section">
-    <h2 id="username">مرحبا المترشح</h2>
-    <div class="box">
-      <h3> مكلف بالزبائن</h3>
-      <div class="status">
-        <span>55 الأسئلة</span>
-        <span class="orange">لم يبدأ بعد</span>
+    <div class="top-row">
+      <!-- Right side: Logo + Center name -->
+      <div class="right-section">
+        <img src="logo.png" alt="Logo" class="logo">
+        <div class="center-name">مركز الامتحان</div>
       </div>
-      <p>امتحان مكلف بالزبائن</p>
-      <button onclick="startExam()">بدء الامتحان</button>
+
+      <!-- Left side: Close button -->
+      <button class="close-btn" onclick="window.close()">×</button>
+    </div>
+
+    <!-- Language selector below -->
+    <div class="language-selector">
+      <label for="language">اللغة:</label>
+      <select id="language">
+        <option value="ar">العربية</option>
+        <option value="en">English</option>
+      </select>
     </div>
   </div>
-
   <div id="exam-section">
     <div class="question" id="question-text"></div>
     <div id="timer"></div>
