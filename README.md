@@ -71,6 +71,7 @@
       background-color: #ddd;
       cursor: pointer;
     }
+
     #exam-section {
   display: flex;
   flex-direction: column;
