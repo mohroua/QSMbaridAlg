@@ -14,19 +14,23 @@
       line-height: 1.6;
       color: #222;
     }
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 30px; /* زيادة البادينج */
-      background-color: #fff;
-      border-bottom: 1px solid #ccc;
-      font-size: 24px; /* تكبير نص الهيدر */
-      font-weight: bold;
-    }
-    .header img {
-      height: 50px; /* تكبير الصورة */
-    }
+    
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    font-size: 24px;
+    font-weight: bold;
+    justify-content: flex-start; /* تغيير من space-between إلى flex-start */
+  }
+
+  .header img {
+    height: 50px;
+    margin-inline-start: auto; /* يدفع الصورة لأقصى اليسار في RTL */
+  }
+  
     .content {
       text-align: center;
       padding: 40px 20px; /* زيادة الحشوة */
