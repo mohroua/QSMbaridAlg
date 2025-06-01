@@ -71,11 +71,20 @@
       background-color: #ddd;
       cursor: pointer;
     }
-
     #exam-section {
-      display: none;
-      padding: 20px;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* يجعل المحتوى في وسط الصفحة عموديًا */
+  padding: 20px;
+  min-height: 70vh; /* يجعل القسم يأخذ جزء كبير من الشاشة ليمكن توسيطه */
+  text-align: center;
+}
+  #choices label {
+  text-align: right; /* لجعل الاختيارات تظهر مرتبة */
+  margin: 10px auto;
+  max-width: 400px;
+}
 
     .question {
       font-size: 20px;
