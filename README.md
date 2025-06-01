@@ -33,13 +33,13 @@
 }
 
 .header-title {
-  font-size: 22px;
+  font-size: 50px;
   font-weight: bold;
   color: #333;
 }
 
 .header-logo {
-  height: 70px;
+  height: 100px;
 }
 
 
