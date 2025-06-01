@@ -48,24 +48,11 @@
     }
 
     .close-btn {
-      font-size: 30px;
+      font-size: 80px;
       color: red;
       background: none;
       border: none;
       cursor: pointer;
-    }
-
-    /* قسم اللغة */
-    .language-select {
-      background-color: #f9f9f9;
-      padding: 10px 80px;
-      text-align: right;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .language-select select {
-      font-size: 16px;
-      padding: 5px;
     }
 
     .content {
@@ -208,15 +195,6 @@
 
     <!-- زر الإغلاق -->
     <button class="close-btn" onclick="window.close()">×</button>
-  </div>
-
-  <!-- اختيار اللغة -->
-  <div class="language-select">
-    <label for="language">اللغة:</label>
-    <select id="language" onchange="changeLanguage(this.value)">
-      <option value="ar">العربية</option>
-      <option value="en">English</option>
-    </select>
   </div>
   
   <div class="content" id="welcome-section">
