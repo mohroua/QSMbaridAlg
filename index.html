@@ -13,68 +13,48 @@
     body {
 
       font-family: Arial, sans-serif;
-
-      background-color: #fffff;
-
+      background-color: #f9f9f9;
       margin: 0;
-
       padding: 0;
 
     }
 
-    .header {
-      background-color: #fff;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 2px solid #ccc;
-    }
+  .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 100px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  direction: rtl;
+}
 
-    .logo-title {
-      display: flex;
-      align-items: center;
-      gap: 80px;
-    }
+.header-title {
+  font-size: 50px;
+  font-weight: bold;
+  color: #333;
+}
 
-    .logo {
-      width: 80px;
-      height: 80px;
-    }
+.header-logo {
+  height: 50px;
+}
 
-    .center-name {
-      font-size: 40px;
-      font-weight: bold;
-    }
 
-    .close-btn {
-      font-size: 80px;
-      color: red;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
 
     .content {
 
       text-align: center;
-
-      padding: 60px;
+      padding: 30px;
 
     }
 
     .box {
 
       background-color: #fff;
-
       border: 1px solid #ddd;
-
-      border-radius: 30px;
-
-      padding: 40px;
-
+      border-radius: 45px;
+      padding: 60px;
       display: inline-block;
-
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
     }
@@ -82,11 +62,8 @@
     .status {
 
       display: flex;
-
       justify-content: center;
-
       align-items: center;
-
       margin: 10px 0;
 
     }
@@ -94,11 +71,8 @@
     .status span {
 
       background-color: #f0f0f0;
-
       border-radius: 10px;
-
       padding: 5px 10px;
-
       margin-right: 10px;
 
     }
@@ -106,25 +80,18 @@
     .status .orange {
 
       background-color: orange;
-
       color: white;
 
     }
 
     button {
 
-      padding: 20px 40px;
-
-      margin-top: 40px;
-
-      font-size: 36px;
-
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-size: 18px;
       border: none;
-
       border-radius: 10px;
-
       background-color: #ddd;
-
       cursor: pointer;
 
     }
@@ -134,8 +101,7 @@
     #exam-section {
 
       display: none;
-
-      padding: 50px;
+      padding: 40px;
 
     }
 
@@ -143,8 +109,7 @@
 
     .question {
 
-      font-size: 50px;
-
+      font-size: 60px;
       font-weight: bold;
 
     }
@@ -152,8 +117,7 @@
     label {
 
       display: block;
-
-      margin: 16px 0;
+      margin: 8px 0;
 
     }
 
@@ -166,19 +130,13 @@
     #timer {
 
       font-weight: bold;
-
       color: red;
-
       margin: 10px 0;
 
     }
-
     #nav-buttons {
-
       margin-top: 15px;
-
     }
-
   </style>
 
 </head>
