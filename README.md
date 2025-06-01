@@ -18,19 +18,19 @@
       padding: 0;
 
     }
-
-  .header {
+    
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
+  padding: 15px 30px;
   background-color: #fff;
   border-bottom: 1px solid #ccc;
   direction: rtl;
 }
 
 .header-title {
-  font-size: 50px;
+  font-size: 30px;
   font-weight: bold;
   color: #333;
 }
@@ -38,8 +38,7 @@
 .header-logo {
   height: 50px;
 }
-
-
+    
 
     .content {
 
