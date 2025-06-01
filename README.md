@@ -22,27 +22,51 @@
 
     }
 
-  .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px 60px;
-  background-color: #fff;
-  border-bottom: 1px solid #ccc;
-  direction: rtl;
-}
+    .header {
+      background-color: #f2f2f2;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #ccc;
+    }
 
-.header-title {
-  font-size: 50px;
-  font-weight: bold;
-  color: #333;
-}
+    .logo-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-.header-logo {
-  height: 100px;
-}
+    .logo {
+      width: 40px;
+      height: 40px;
+    }
 
+    .center-name {
+      font-size: 20px;
+      font-weight: bold;
+    }
 
+    .close-btn {
+      font-size: 24px;
+      color: red;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* قسم اللغة */
+    .language-select {
+      background-color: #f9f9f9;
+      padding: 10px 20px;
+      text-align: right;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .language-select select {
+      font-size: 16px;
+      padding: 5px;
+    }
 
     .content {
 
@@ -174,13 +198,27 @@
 
 <body>
 
+  <!-- الهيدر -->
   <div class="header">
-  <div class="header-title">مركز الامتحان</div>
-  <img class="header-logo" src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo">
-</div>
+    <!-- شعار + اسم المركز -->
+    <div class="logo-title">
+      <img src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo" class="logo">
+      <div class="center-name">مركز الامتحان</div>
+    </div>
 
+    <!-- زر الإغلاق -->
+    <button class="close-btn" onclick="window.close()">×</button>
+  </div>
 
-
+  <!-- اختيار اللغة -->
+  <div class="language-select">
+    <label for="language">اللغة:</label>
+    <select id="language" onchange="changeLanguage(this.value)">
+      <option value="ar">العربية</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+  
   <div class="content" id="welcome-section">
     <h2 id="username">مرحبا المترشح</h2>
     <div class="box">
@@ -206,6 +244,10 @@
   </div>
 
   <script>
+    function changeLanguage(lang) {
+      alert("تم تغيير اللغة إلى: " + lang);
+      // هنا يمكنك تنفيذ منطق تغيير اللغة الحقيقي حسب الحاجة
+    }
     // التقاط الاسم من الرابط
     function getNameFromURL() {
       const params = new URLSearchParams(window.location.search);
