@@ -62,9 +62,9 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  background-color: #ffff;
   direction: rtl;
-  text-align: center;
+  text-align: right;
   width: 100%;
 }
 
