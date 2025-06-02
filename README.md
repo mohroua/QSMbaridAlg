@@ -768,7 +768,7 @@ function finishQuiz() {
 
   bottom: 0;
 
-  width: 100%;
+  width: 85%;
 
   text-align: center;
 
@@ -778,7 +778,7 @@ function finishQuiz() {
 
   background-color: transparent;
 
-  padding: 10px 0;
+  padding: 5px 0;
 
   direction: rtl;
 
