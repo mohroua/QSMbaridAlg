@@ -47,131 +47,70 @@
 
 
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 0;
-    }
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  direction: rtl;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 5px 10px;
-      background-color: #fff;
-      border-bottom: 1px solid #ccc;
-    }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 15px;
+  border-bottom: 1px solid #ccc;
+  background-color: white;
+}
 
-    .header-content {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
+.header h1 {
+  font-size: 22px;
+  margin: 0;
+}
 
-    .header-content span {
-      font-size: 18px;
-      font-weight: bold;
-    }
+.header img {
+  height: 50px;
+  width: auto;
+}
 
-    .header-content img {
-      height: 60px;
-    }
+.question-container {
+  padding: 25px 15px;
+}
 
-    .content {
-      text-align: center;
-      padding: 15px;
-    }
+.question-container h2 {
+  font-size: 24px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
 
-    .box {
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 15px;
-      display: inline-block;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-      width: 70%;
-      max-width: 800px;
-      min-width: 300px;
-      margin: 0 auto;
-    }
+.timer {
+  color: red;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
 
-    .status {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 5px 0;
-    }
+.options {
+  text-align: right;
+  max-width: 300px;
+  margin: 0 auto 30px;
+}
 
-    .status span {
-      background-color: #f0f0f0;
-      border-radius: 10px;
-      padding: 3px 8px;
-      margin-right: 5px;
-      font-size: 14px;
-    }
+.options label {
+  display: block;
+  margin: 12px 0;
+  font-size: 18px;
+  cursor: pointer;
+}
 
-    .status .orange {
-      background-color: orange;
-      color: white;
-    }
-
-    button {
-      padding: 8px 16px;
-      margin-top: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      background-color: #ddd;
-      cursor: pointer;
-    }
-
-    #exam-section {
-      display: none;
-      padding: 20px;
-    }
-
-    .question {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    label {
-      display: block;
-      margin: 5px 0;
-      font-size: 15px;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    #timer {
-      font-weight: bold;
-      color: red;
-      margin: 5px 0;
-    }
-
-    #nav-buttons {
-      margin-top: 10px;
-    }
-
-    .correct {
-      color: green;
-      font-weight: bold;
-    }
-
-    .wrong {
-      color: red;
-      font-weight: bold;
-    }
-
-    .question-block {
-      margin-bottom: 20px;
-    }
-
-
-
+button {
+  background-color: #ddd;
+  padding: 10px 20px;
+  border: none;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
 
 
   </style>
