@@ -412,6 +412,36 @@ body {
 
   <script>
 
+    window.addEventListener("beforeunload", function (e) {
+
+  // منع الخروج بدون رسالة في بعض المتصفحات
+
+  e.preventDefault();
+
+  e.returnValue = "";
+
+
+
+  // عرض رسالة إقصاء واضحة داخل الصفحة
+
+  document.body.innerHTML = `
+
+    <div style="background-color: black; color: red; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 40px; font-weight: bold;">
+
+      تم إقصاؤك من الإمتحان
+
+    </div>
+
+  `;
+
+
+
+  // إيقاف كل شيء آخر
+
+  clearInterval(timerInterval);
+
+});
+
     // التقاط الاسم من الرابط
 
     function getNameFromURL() {
@@ -584,67 +614,109 @@ body {
 
     let timerInterval;
 
+  
+
+  function showQuestion() {
+
+  clearInterval(timerInterval);
+
+
+
+  const q = questions[currentQuestion];
+
+  document.getElementById("question-text").textContent = `السؤال ${currentQuestion + 1}: ${q.q}`;
+
+
+
+  const choicesDiv = document.getElementById("choices");
+
+  choicesDiv.innerHTML = "";
+
+
+
+  const timeLeft = timers[currentQuestion];
+
+  const isLocked = timeLeft <= 0;
+
+
+
+  q.choices.forEach((choice, i) => {
+
+    const label = document.createElement("label");
+
+    const input = document.createElement("input");
+
+    input.type = "radio";
+
+    input.name = "choice";
+
+    input.value = i;
+
+
+
+    // عرض الإجابة المحفوظة إن وجدت
+
+    if (answers[currentQuestion] === i) input.checked = true;
+
+
+
+    // لا يمكن تعديل الإجابة إذا انتهى الوقت
+
+    input.disabled = isLocked;
+
+
+
+    label.appendChild(input);
+
+    label.appendChild(document.createTextNode(" " + choice));
+
+    choicesDiv.appendChild(label);
+
+  });
+
+
+
+  // عرض الوقت المتبقي أو انتهاء الوقت
+
+  const timerElement = document.getElementById("timer");
+
+  if (isLocked) {
+
+    timerElement.textContent = "انتهى الوقت.";
+
+    return;
+
+  }
+
+
+
+  timerElement.textContent = `الوقت المتبقي: ${timeLeft} ثانية`;
+
+
+
+  // تشغيل المؤقت
+
+  timerInterval = setInterval(() => {
+
+    timers[currentQuestion]--;
+
+    timerElement.textContent = `الوقت المتبقي: ${timers[currentQuestion]} ثانية`;
+
+    if (timers[currentQuestion] <= 0) {
+
+      clearInterval(timerInterval);
+
+      timerElement.textContent = "انتهى الوقت.";
+
+      document.querySelectorAll("input[name='choice']").forEach(input => input.disabled = true);
+
+    }
+
+  }, 1000);
+
+}
+
     
-
-    function showQuestion() {
-
-      clearInterval(timerInterval);
-
-
-
-      const q = questions[currentQuestion];
-
-      document.getElementById("question-text").textContent = `السؤال ${currentQuestion + 1}: ${q.q}`;
-
-      const choicesDiv = document.getElementById("choices");
-
-      choicesDiv.innerHTML = "";
-
-
-
-      q.choices.forEach((choice, index) => {
-
-        const label = document.createElement("label");
-
-        const input = document.createElement("input");
-
-        input.type = "radio";
-
-        input.name = "choice";
-
-        input.value = index;
-
-        input.disabled = (timers[currentQuestion] <= 0 || answers[currentQuestion] !== null);
-
-        if (answers[currentQuestion] === index) input.checked = true;
-
-
-
-        input.addEventListener("change", () => {
-
-          if (currentQuestion > 0) {
-
-  currentQuestion--;
-
-  showQuestion();
-
-          }
-
-          
-
-        });
-
-
-
-        label.appendChild(input);
-
-        label.appendChild(document.createTextNode(" " + choice));
-
-        choicesDiv.appendChild(label);
-
-      });
-
-
 
       // إخفاء زر السابق إذا كنا في السؤال الأول
 
@@ -656,7 +728,7 @@ body {
 
     }
 
-    
+
 
     function startTimer() {
 
@@ -818,7 +890,9 @@ body {
 
     <p>عدد الإجابات الصحيحة: ${correct}</p>
 
-    <p>عدد الإجابات الخاطئة: ${wrong}</p>
+    <p>عدد الإج
+
+ابات الخاطئة: ${wrong}</p>
 
     <p><strong>علامتك النهائية: ${finalScore} من ${questions.length}</strong></p>
 
@@ -826,9 +900,7 @@ body {
 
   `;
 
-}
-
-
+        }
 
   </script>
 
