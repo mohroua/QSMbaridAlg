@@ -584,101 +584,71 @@ body {
 
     let timerInterval;
 
+    
 
+    function showQuestion() {
 
-function showQuestion() {
-
-  clearInterval(timerInterval);
-
-
-
-  const q = questions[currentQuestion];
-
-  document.getElementById("question-text").textContent = `السؤال ${currentQuestion + 1}: ${q.q}`;
+      clearInterval(timerInterval);
 
 
 
-  const choicesDiv = document.getElementById("choices");
+      const q = questions[currentQuestion];
 
-  choicesDiv.innerHTML = "";
+      document.getElementById("question-text").textContent = `السؤال ${currentQuestion + 1}: ${q.q}`;
 
+      const choicesDiv = document.getElementById("choices");
 
-
-  const timeLeft = timers[currentQuestion];
-
-  const isLocked = timeLeft <= 0;
+      choicesDiv.innerHTML = "";
 
 
 
-  q.choices.forEach((choice, i) => {
+      q.choices.forEach((choice, index) => {
 
-    const label = document.createElement("label");
+        const label = document.createElement("label");
 
-    const input = document.createElement("input");
+        const input = document.createElement("input");
 
-    input.type = "radio";
+        input.type = "radio";
 
-    input.name = "choice";
+        input.name = "choice";
 
-    input.value = i;
+        input.value = index;
 
-    if (answers[currentQuestion] === i) input.checked = true;
+        input.disabled = (timers[currentQuestion] <= 0 || answers[currentQuestion] !== null);
 
-    input.disabled = isLocked;
-
-    label.appendChild(input);
-
-    label.appendChild(document.createTextNode(" " + choice));
-
-    choicesDiv.appendChild(label);
-
-  });
+        if (answers[currentQuestion] === index) input.checked = true;
 
 
 
-  const timerElement = document.getElementById("timer");
+        input.addEventListener("change", () => {
 
-  if (isLocked) {
+          if (currentQuestion > 0) {
 
-    timerElement.textContent = "انتهى الوقت.";
+  currentQuestion--;
 
-  } else {
+  showQuestion();
 
-    timerElement.textContent = `الوقت المتبقي: ${timeLeft} ثانية`;
+          }
 
+          
 
-
-    timerInterval = setInterval(() => {
-
-      timers[currentQuestion]--;
-
-      timerElement.textContent = `الوقت المتبقي: ${timers[currentQuestion]} ثانية`;
+        });
 
 
 
-      if (timers[currentQuestion] <= 0) {
+        label.appendChild(input);
 
-        clearInterval(timerInterval);
+        label.appendChild(document.createTextNode(" " + choice));
 
-        timerElement.textContent = "انتهى الوقت.";
+        choicesDiv.appendChild(label);
 
-        disableChoices();
-
-        setTimeout(nextQuestion, 1000);
-
-      }
-
-    }, 1000);
-
-  }
+      });
 
 
 
-  // إخفاء زر السابق إذا كنا في السؤال الأول
+      // إخفاء زر السابق إذا كنا في السؤال الأول
 
-  document.getElementById("prevBtn").style.display = currentQuestion === 0 ? "none" : "inline";
-
-}
+      document.getElementById("prevBtn").style.display = currentQuestion === 0 ? "none" : "inline";
 
 
 
@@ -686,7 +656,7 @@ function showQuestion() {
 
     }
 
-
+    
 
     function startTimer() {
 
