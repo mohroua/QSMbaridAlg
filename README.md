@@ -54,37 +54,59 @@
 
   align-items: center;
 
-  padding: 15px 30px;
+  padding: 10px 20px;
 
   background-color: #fff;
 
   border-bottom: 1px solid #ccc;
 
-  direction: rtl;
+}
+
+
+
+.header {
+
+  display: flex;
+
+  justify-content: center; /* توسيط المحتوى الكامل */
+
+  padding: 10px 20px;
+
+  background-color: #fff;
+
+  border-bottom: 1px solid #ccc;
 
 }
 
 
 
-.header-title {
+.header-content {
 
-  font-size: 22px;
+  display: flex;
+
+  align-items: center;
+
+  gap: 40px; /* المسافة المتوازنة بين النص والشعار */
+
+}
+
+
+
+.header-content span {
+
+  font-size: 20px;
 
   font-weight: bold;
 
-  color: #333;
-
 }
 
 
 
-.header-logo {
+.header-content img {
 
-  height: 50px;
+  height: 40px;
 
 }
-
-
 
 
 
@@ -336,6 +358,8 @@
 
     }
 
+    
+
       
 
   </style>
@@ -365,14 +389,6 @@
     </div>
 
 
-
-    <!-- زر الإغلاق -->
-
-    <button class="close-btn" onclick="window.close()">×</button>
-
-  </div>
-
-  
 
   <div class="content" id="welcome-section">
 
