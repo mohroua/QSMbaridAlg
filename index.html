@@ -322,297 +322,132 @@
 
   </style>
 
-
-
 </head>
-
-
 
 <body>
   
-  <div id="exam-container">
-    <!-- زر بدء الامتحان -->
-    <button id="startBtn" onclick="startExam()">بدء الامتحان</button>
-    
-    <!-- رسالة الإقصاء -->
-    <p id="excludedMessage" style="color: red; display: none;">
-      تم إقصاؤك من الامتحان بسبب الخروج أو تحديث الصفحة.
-    </p>
-    
-    <!-- هنا ضع الأسئلة والعداد والنتيجة لاحقًا -->
-    <div id="quizContent" style="display: none;">
-      <!-- محتوى الامتحان سيظهر هنا عند البدء -->
-    </div>
-  </div>
-  
-
+      
   <div class="header">
-
   <div class="header-content">
-
-   <img src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo">
-
     <span>مركز الامتحان</span>
-
+    <img src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo">
   </div>
-
 </div>
 
 
-
   <div class="content" id="welcome-section">
-
     <h2 id="username">مرحبا المترشح</h2>
-
     <div class="box">
-
       <h3> مكلف بالزبائن</h3>
-
       <div class="status">
-
         <span>55 الأسئلة</span>
-
         <span class="orange">لم يبدأ بعد</span>
-
       </div>
-
       <p>امتحان مكلف بالزبائن</p>
-
       <button onclick="startExam()">بدء الامتحان</button>
-
     </div>
-
   </div>
-
-
 
   <div id="exam-section">
-
     <div class="question" id="question-text"></div>
-
     <div id="timer"></div>
-
     <div id="choices"></div>
-
     <div id="nav-buttons">
-
       <button id="prevBtn" onclick="prevQuestion()">السابق</button>
-
       <button onclick="nextQuestion()">التالي</button>
-
     </div>
-
     <div id="result" class="hidden"></div>
-
   </div>
 
-
-
   <script>
-
-    window.addEventListener("beforeunload", function (e) {
-
-  // منع الخروج بدون رسالة في بعض المتصفحات
-
-  e.preventDefault();
-
-  e.returnValue = "";
-
-
-
-  // عرض رسالة إقصاء واضحة داخل الصفحة
-
-  document.body.innerHTML = `
-
-    <div style="background-color: black; color: red; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 40px; font-weight: bold;">
-
-      تم إقصاؤك من الإمتحان
-
-    </div>
-
-  `;
-
-
-
-  // إيقاف كل شيء آخر
-
-  clearInterval(timerInterval);
-
-});
-
     // التقاط الاسم من الرابط
-
     function getNameFromURL() {
-
       const params = new URLSearchParams(window.location.search);
-
       return params.get("name") || "المترشح";
-
     }
-
-
 
     // عرض الاسم
-
     document.addEventListener("DOMContentLoaded", function() {
-
       const name = getNameFromURL();
-
       document.getElementById("username").textContent = `مرحبا ${name.replace('.', ' ')}`;
-
     });
 
-
-
     // بدء الامتحان
-
     function startExam() {
-
       document.getElementById("welcome-section").style.display = "none";
-
       document.getElementById("exam-section").style.display = "block";
-
       showQuestion();
-
     }
-
-
 
     const questions = [];
 
-
-
     function addQuestion(q, options, correct) {
-
       questions.push({ q, choices: options, correct });
-
     }
 
-
-
     // إضافة الأسئلة
-
     addQuestion("ما هي الوثائق المطلوبة لفتح حساب بريدي جاري؟", ["نسخة من شهادة الميلاد", "الوثيقة CH1 + نسخة من بطاقة الهوية", "بطاقة إقامة", "شهادة عمل"], 1);
-
     addQuestion("ما هو الحد الأقصى اليومي للتحويل من حساب إلى حساب عبر الصراف؟", ["20,000 دج", "30,000 دج", "50,000 دج", "100,000 دج"], 2);
-
     addQuestion("ما هي الخدمة التي تسمح بالسحب بدون بطاقة؟", ["Hawalatic", "Cardless", "Flexy", "Edahabia"], 1);
-
     addQuestion("في أي سنة تم إطلاق البطاقة الذهبية؟", ["2014", "2016", "2017", "2019"], 1);
-
     addQuestion("ما هو الرقم الأخضر لبريد الجزائر؟", ["1530", "1055", "1500", "1020"], 0);
-
     addQuestion("ما نوع الحساب الذي يقدّمه بريد الجزائر لتلقي الأجور؟", ["حساب تجاري", "حساب توفير", "حساب بريدي جاري (CCP)", "حساب مشترك"], 2);
-
     addQuestion("كم هو الحد الأدنى للرصيد اللازم لفتح حساب CCP؟", ["0 دج", "1000 دج", "500 دج", "100 دج"], 0);
-
     addQuestion("ما هو الرمز الذي يُستخدم لتحويل الأموال إلى حساب CCP؟", ["RIB", "RIP", "IBAN", "SWIFT"], 1);
-
     addQuestion("ما هي الرسوم السنوية للبطاقة الذهبية؟", ["مجانية", "350 دج", "500 دج", "1000 دج"], 1);
-
     addQuestion("ما هي مدة صلاحية البطاقة الذهبية؟", ["سنة واحدة", "سنتان", "ثلاث سنوات", "خمس سنوات"], 2);
-
     addQuestion("أي من هذه الخدمات يمكن إجراؤها عبر البطاقة الذهبية؟", ["دفع الفواتير", "السحب من الصراف", "شراء عبر الإنترنت", "جميع ما سبق"], 3);
-
     addQuestion("ما هي الجهة المخوّلة بإصدار دفتر الشيكات البريدي؟", ["وزارة المالية", "البنك المركزي", "بريد الجزائر", "الخزينة العمومية"], 2);
-
     addQuestion("كيف يتم تفعيل البطاقة الذهبية بعد استلامها؟", ["عبر الهاتف", "عبر تطبيق BaridiMob", "من مكتب البريد", "عبر الصراف الآلي"], 3);
-
     addQuestion("ما هو المبلغ الأقصى للسحب اليومي من البطاقة الذهبية؟", ["20,000 دج", "30,000 دج", "50,000 دج", "لا يوجد حد"], 2);
-
     addQuestion("كيف يُمكن للزبون إيقاف البطاقة الذهبية في حالة الضياع؟", ["عبر إرسال بريد إلكتروني", "عبر الاتصال بالرقم 1530", "بزيارة الموقع", "لا يمكن ذلك"], 1)                                                                    // الأسئلة (1–55)
-
     addQuestion("ما هو البريد؟", ["نقل الرسائل", "نقل الأموال", "نقل الأشخاص", "كل ما سبق"], 0);
-
     addQuestion("متى تأسس بريد الجزائر؟", ["1962", "1975", "1990", "2000"], 0);
-
     addQuestion("ما هي الخدمات التي يقدمها بريد الجزائر؟", ["خدمات البريد فقط", "خدمات مالية فقط", "خدمات بريدية ومالية", "خدمات سياحية"], 2);
-
     addQuestion("ما هو رقم الطوارئ في بريد الجزائر؟", ["15", "19", "14", "17"], 1);
-
     addQuestion("ما هو البريد السريع؟", ["خدمة توصيل الرسائل خلال يوم", "خدمة توصيل الطرود الدولية", "خدمة توصيل الطرود بسرعة عالية", "خدمة إرسال الرسائل الإلكترونية"], 2);
-
     addQuestion("أي من التالي هو نوع من الخدمات المالية في بريد الجزائر؟", ["القروض", "الحسابات البريدية", "التأمين", "الاستثمار العقاري"], 1);
-
     addQuestion("ما هي العملات التي يمكن استخدامها في البريد؟", ["الدينار الجزائري فقط", "الدولار فقط", "الدينار واليورو", "أي عملة"], 2);
-
     addQuestion("ما هو الهدف من خدمة الحساب البريدي الجاري؟", ["حفظ الأموال", "السحب والإيداع فقط", "إجراء المعاملات المالية", "نقل الأموال فقط"], 2);
-
     addQuestion("أي من هذه الخدمات متعلقة بالطرود؟", ["إرسال الرسائل", "تتبع الطرود", "خدمة الهاتف", "الإنترنت"], 1);
-
     addQuestion("ما هو البريد الإلكتروني؟", ["رسالة إلكترونية", "خدمة الطرود", "خدمة البريد السريع", "نوع من الطرود"], 0);
-
     addQuestion("كيف يمكن للزبون تتبع طرده؟", ["عن طريق رقم التتبع", "عن طريق الهاتف فقط", "عن طريق البريد الإلكتروني", "لا يمكن تتبع الطرد"], 0);
-
     addQuestion("ما هو عمل موظف البريد؟", ["نقل الرسائل فقط", "تقديم الخدمات المالية فقط", "تقديم الخدمات البريدية والمالية", "خدمة العملاء فقط"], 2);
-
     addQuestion("ما هي الوثائق المطلوبة لفتح حساب بريدي؟", ["بطاقة التعريف فقط", "شهادة ميلاد فقط", "بطاقة التعريف وشهادة الميلاد", "لا حاجة لوثائق"], 0);
-
     addQuestion("ما هو البريد المالي؟", ["خدمة تقديم القروض", "خدمة التحويلات المالية", "خدمة التوظيف", "خدمة الطرود"], 1);
-
     addQuestion("ما هي ساعات عمل بريد الجزائر؟", ["من 8 صباحا إلى 4 مساء", "من 9 صباحا إلى 5 مساء", "24 ساعة", "من 7 صباحا إلى 3 مساء"], 0);
-
     addQuestion("من يحدد سياسة الأسعار في بريد الجزائر؟", ["الدولة", "المدير العام", "الوزارة الوصية", "مجلس الإدارة"], 2);
-
     addQuestion("ما هي اللغة الرسمية للمراسلات الإدارية؟", ["العربية", "الفرنسية", "الإنجليزية", "كل ما سبق"], 0);
-
     addQuestion("أي من هذه التصرفات يُعد مخالفًا في الإدارة؟", ["العمل في الوقت المحدد", "تقديم الخدمات للزبائن", "استغلال المنصب لمصالح شخصية", "إبلاغ الرؤساء عن الأخطاء"], 2);
-
     addQuestion("ما هو السلم الإداري الصحيح للتظلم داخل المؤسسة؟", ["الإدارة المباشرة ثم المفتشية", "المفتشية ثم القضاء", "الزملاء ثم الإدارة", "الإعلام فقط"], 0);
-
     addQuestion("ما معنى التوقيت الإداري؟", ["توقيت دخول الزبائن", "توقيت عمل الموظفين", "توقيت تسليم الطرود", "توقيت البريد السريع"], 1);
-
     addQuestion("ما هو اللباس المهني المطلوب في بريد الجزائر؟", ["غير مهم", "رسمي ومحترم", "حسب الطقس", "رياضي"], 1);
-
     addQuestion("ما المقصود بالهيكل التنظيمي؟", ["ترتيب المكاتب", "خريطة توضح تسلسل المسؤوليات", "عدد الموظفين", "قائمة العطل"], 1);
-
     addQuestion("من هو المسؤول عن الانضباط داخل المؤسسة؟", ["المدير", "الموظف نفسه", "المفتش", "كل ما سبق"], 3);
-
     addQuestion("ما هي الجهة التي تراقب جودة الخدمات؟", ["مفتشية العمل", "المديرية العامة", "مكتب الشكاوي", "كل ما سبق"], 3);
-
     addQuestion("ما هو التصرف المناسب عند تأخر الزبون؟", ["تجاهله", "مساعدته بسرعة واحترام", "مجادلته", "رفض خدمته"], 1);
-
     addQuestion("ما هو السلوك المطلوب من الموظف تجاه كبار السن؟", ["السرعة فقط", "الاهتمام والاحترام", "طلب مساعدة آخرين", "تجاهل"], 1);
-
     addQuestion("من المسؤول عن تسجيل العطل السنوية؟", ["الموظف", "مصلحة المستخدمين", "المدير فقط", "لا أحد"], 1);
-
     addQuestion("ما هي الوثيقة التي تُقدّم عند المرض؟", ["عذر شفهي", "شهادة طبية", "بطاقة مريض", "وصفة دواء"], 1);
-
     addQuestion("ما هو الهدف من التكوين داخل المؤسسة؟", ["التسلية", "رفع الأداء والكفاءة", "مراقبة الموظفين", "تحديد العقوبات"], 1);
-
     addQuestion("من يتخذ القرار في نقل الموظف؟", ["رئيس المصلحة", "الموظف نفسه", "المديرية العامة", "الزملاء"], 2);
-
     addQuestion("ما هو التصرف الصحيح عند حدوث خطأ في العمل؟", ["إخفاؤه", "إبلاغ المسؤول فوراً", "إلقاء اللوم على الزملاء", "ترك العمل"], 1);
-
     addQuestion("من يقيّم أداء الموظف؟", ["زميله", "الزبائن", "المسؤول المباشر", "المدير العام"], 2);
-
     addQuestion("ما المقصود بالأمانة المهنية؟", ["احترام الزملاء", "المحافظة على ممتلكات المؤسسة والسرية", "اللباس الرسمي", "الرد على المكالمات"], 1);
-
     addQuestion("متى تُعتبر الغيابات غير مبررة؟", ["عند تقديم شهادة طبية", "بعد العطلة السنوية", "بدون تبرير أو وثيقة رسمية", "عند الوصول متأخراً"], 2);
-
     addQuestion("ما هو السلوك الإداري غير المقبول؟", ["العمل بروح الفريق", "استقبال الزبائن بأدب", "الرد بعنف على الزبائن", "الالتزام بالمهام"], 2);
-
     addQuestion("ما المقصود بالاتصال الإداري؟", ["مكالمات شخصية", "مراسلات بين الأعوان", "نقل المعلومات داخل المؤسسة", "البريد الإلكتروني فقط"], 2);
-
     addQuestion("أي من التالي يُعد وسيلة تواصل داخلية؟", ["الصحف الوطنية", "الإذاعة", "المذكرة الإدارية", "الإعلانات التجارية"], 2);
-
     addQuestion("كيف يُحسن الموظف علاقته مع زملائه؟", ["التعاون والاحترام", "العمل الفردي فقط", "الغيرة والمنافسة", "التحدث كثيرًا"], 0);
-
     addQuestion("ما هي العقوبة الإدارية الأخف؟", ["الطرد النهائي", "التوبيخ", "الخصم من الأجر", "التوقيف المؤقت"], 1);
-
     addQuestion("كيف يمكن تطوير الكفاءة المهنية؟", ["التكوين المستمر", "الراحة فقط", "العمل الروتيني", "تجاهل التعليمات"], 0);
-
     
-
     let currentQuestion = 0;
-
     let answers = Array(questions.length).fill(null);
-
     let timers = Array(questions.length).fill(120); // 120 ثانية
-
     let timerInterval;
 
-function showQuestion() {
+    function showQuestion() {
       clearInterval(timerInterval);
 
       const q = questions[currentQuestion];
@@ -731,129 +566,8 @@ function showQuestion() {
     <p><strong>علامتك النهائية: ${finalScore} من ${questions.length}</strong></p>
     <p>${message}</p>
   `;
-    }
-    <body>
-  <div id="exam-container">
-    <button id="startBtn" onclick="startExam()">بدء الامتحان</button>
-    <p id="excludedMessage" style="color: red; display: none;">تم إقصاؤك من الامتحان بسبب الخروج من الصفحة.</p>
-    <!-- بقية عناصر الامتحان هنا -->
-  </div>
+}
 
-  <script>
-    // عند تحميل الصفحة: تحقق من حالة الإقصاء
-    window.onload = function () {
-      const wasExcluded = localStorage.getItem("excluded");
-      const examStarted = localStorage.getItem("examStarted");
-
-      if (wasExcluded === "true") {
-        document.getElementById("startBtn").style.display = "none";
-        document.getElementById("excludedMessage").style.display = "block";
-        // يمكنك إخفاء باقي عناصر الامتحان هنا إذا لزم
-      } else if (examStarted === "true") {
-        // إذا بدأ الامتحان ولكن الصفحة أُعيد تحميلها ← إقصاء
-        localStorage.setItem("excluded", "true");
-        location.reload(); // لإعادة تحميل الصفحة وإظهار رسالة الإقصاء
-      }
-    };
-
-    function startExam() {
-      localStorage.setItem("examStarted", "true");
-      localStorage.setItem("excluded", "false");
-      document.getElementById("startBtn").style.display = "none";
-      // استدعاء دالة بدء الامتحان الفعلي مثل:
-      // showQuestion();
-    }
-
-    // إذا حاول الخروج أو التحديث
-    window.addEventListener("beforeunload", function (e) {
-      const examStarted = localStorage.getItem("examStarted");
-      if (examStarted === "true") {
-        localStorage.setItem("excluded", "true");
-        // إظهار رسالة تنبيه (اختياري)
-        e.preventDefault();
-        e.returnValue = '';
-      }
-    });
-    <body>
-  <div id="exam-container">
-    <button id="startBtn" onclick="startExam()">بدء الامتحان</button>
-    <p id="excludedMessage" style="color: red; display: none;">تم إقصاؤك من الامتحان بسبب الخروج من الصفحة.</p>
-    <!-- بقية عناصر الامتحان هنا -->
-  </div>
-
-  <script>
-    // عند تحميل الصفحة: تحقق من حالة الإقصاء
-    window.onload = function () {
-      const wasExcluded = localStorage.getItem("excluded");
-      const examStarted = localStorage.getItem("examStarted");
-
-      if (wasExcluded === "true") {
-        document.getElementById("startBtn").style.display = "none";
-        document.getElementById("excludedMessage").style.display = "block";
-        // يمكنك إخفاء باقي عناصر الامتحان هنا إذا لزم
-      } else if (examStarted === "true") {
-        // إذا بدأ الامتحان ولكن الصفحة أُعيد تحميلها ← إقصاء
-        localStorage.setItem("excluded", "true");
-        location.reload(); // لإعادة تحميل الصفحة وإظهار رسالة الإقصاء
-      }
-    };
-
-    function startExam() {
-      localStorage.setItem("examStarted", "true");
-      localStorage.setItem("excluded", "false");
-      document.getElementById("startBtn").style.display = "none";
-      // استدعاء دالة بدء الامتحان الفعلي مثل:
-      // showQuestion();
-    }
-
-    // إذا حاول الخروج أو التحديث
-    window.addEventListener("beforeunload", function (e) {
-      const examStarted = localStorage.getItem("examStarted");
-      if (examStarted === "true") {
-        localStorage.setItem("excluded", "true");
-        // إظهار رسالة تنبيه (اختياري)
-        e.preventDefault();
-        e.returnValue = '';
-      }  
-  });
-<script>
-  // عند تحميل الصفحة
-  window.onload = function () {
-    const wasExcluded = localStorage.getItem("excluded");
-    const examStarted = localStorage.getItem("examStarted");
-
-    if (wasExcluded === "true") {
-      document.getElementById("startBtn").style.display = "none";
-      document.getElementById("excludedMessage").style.display = "block";
-      document.getElementById("quizContent").style.display = "none";
-    } else if (examStarted === "true") {
-      // تم تحديث الصفحة أثناء الامتحان = إقصاء
-      localStorage.setItem("excluded", "true");
-      location.reload();
-    }
-  };
-
-  // بدء الامتحان
-  function startExam() {
-    localStorage.setItem("examStarted", "true");
-    localStorage.setItem("excluded", "false");
-    document.getElementById("startBtn").style.display = "none";
-    document.getElementById("excludedMessage").style.display = "none";
-    document.getElementById("quizContent").style.display = "block";
-
-    // استدعِ دالة عرض الأسئلة هنا مثلاً:
-    // showQuestion();
-  }
-
-  // عند محاولة إغلاق الصفحة أو التحديث
-  window.addEventListener("beforeunload", function (e) {
-    const examStarted = localStorage.getItem("examStarted");
-    if (examStarted === "true") {
-      localStorage.setItem("excluded", "true");
-      e.preventDefault();
-      e.returnValue = '';
-    }
-  });
-</script>
-  </body>
+  </script>
+</body>
 </html>
