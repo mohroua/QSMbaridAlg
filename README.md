@@ -262,7 +262,63 @@ body {
 
 
 
+.questions-wrapper {
 
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  margin-top: 30px;
+
+  min-height: 200px; /* لتثبيت الارتفاع بشكل عام */
+
+  position: relative;
+
+}
+
+
+
+/* الصندوق الموحد للأسئلة */
+
+.question-box {
+
+  background-color: #fff;
+
+  border: 1px solid #ccc;
+
+  border-radius: 15px;
+
+  padding: 20px;
+
+  margin: 10px;
+
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+  display: none;
+
+  width: fit-content;
+
+  max-width: 80%;
+
+  transition: all 0.3s ease;
+
+  white-space: nowrap; /* لا يكسر الكلام */
+
+}
+
+
+
+/* الصندوق المعروض حاليًا */
+
+.question-box.active {
+
+  display: block;
+
+}
+
+    
 
     .question {
 
@@ -366,8 +422,6 @@ body {
 
 
 
-
-
   <div class="content" id="welcome-section">
 
     <h2 id="username">مرحبا المترشح</h2>
@@ -392,7 +446,15 @@ body {
 
   </div>
 
+<div class="questions-wrapper">
 
+  <div class="question-box active">ما هو عاصمة الجزائر؟</div>
+
+  <div class="question-box">ما هو أطول نهر في العالم وما طوله التقريبي؟</div>
+
+  <div class="question-box">من هو مكتشف قانون الجاذبية؟</div>
+
+</div>
 
   <div id="exam-section">
 
@@ -596,7 +658,9 @@ body {
 
       clearInterval(timerInterval);
 
+      const questions = document.querySelectorAll('.question-box');
 
+      let current = 0;
 
       const q = questions[currentQuestion];
 
