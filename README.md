@@ -6,7 +6,23 @@
 
 
 
+
+
+
+
+
+
+
+
 <html lang="ar" dir="rtl">
+
+
+
+
+
+
+
+
 
 
 
@@ -22,7 +38,23 @@
 
 
 
+
+
+
+
+
+
+
+
   <meta charset="UTF-8">
+
+
+
+
+
+
+
+
 
 
 
@@ -38,6 +70,14 @@
 
 
 
+
+
+
+
+
+
+
+
   <style>
 
 
@@ -46,135 +86,157 @@
 
 
 
+
+
+
+
+
+
+
+
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 0;
-    }
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 5px 10px;
-      background-color: #fff;
-      border-bottom: 1px solid #ccc;
-    }
+  font-family: 'Arial', sans-serif;
 
-    .header-content {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
+  background-color: #f9f9f9;
 
-    .header-content span {
-      font-size: 18px;
-      font-weight: bold;
-    }
+  direction: rtl;
 
-    .header-content img {
-      height: 60px;
-    }
+  text-align: center;
 
-    .content {
-      text-align: center;
-      padding: 15px;
-    }
+  margin: 0;
 
-    .box {
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 15px;
-      display: inline-block;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-      width: 70%;
-      max-width: 800px;
-      min-width: 300px;
-      margin: 0 auto;
-    }
+  padding: 0;
 
-    .status {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 5px 0;
-    }
+}
 
-    .status span {
-      background-color: #f0f0f0;
-      border-radius: 10px;
-      padding: 3px 8px;
-      margin-right: 5px;
-      font-size: 14px;
-    }
 
-    .status .orange {
-      background-color: orange;
-      color: white;
-    }
 
-    button {
-      padding: 8px 16px;
-      margin-top: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      background-color: #ddd;
-      cursor: pointer;
-    }
+.header {
 
-    #exam-section {
-      display: none;
-      padding: 20px;
-    }
+  display: flex;
 
-    .question {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
+  justify-content: space-between;
 
-    label {
-      display: block;
-      margin: 5px 0;
-      font-size: 15px;
-    }
+  align-items: center;
 
-    .hidden {
-      display: none;
-    }
+  padding: 20px 15px;
 
-    #timer {
-      font-weight: bold;
-      color: red;
-      margin: 5px 0;
-    }
+  border-bottom: 1px solid #ccc;
 
-    #nav-buttons {
-      margin-top: 10px;
-    }
+  background-color: white;
 
-    .correct {
-      color: green;
-      font-weight: bold;
-    }
+}
 
-    .wrong {
-      color: red;
-      font-weight: bold;
-    }
 
-    .question-block {
-      margin-bottom: 20px;
-    }
+
+.header h1 {
+
+  font-size: 22px;
+
+  margin: 0;
+
+}
+
+
+
+.header img {
+
+  height: 50px;
+
+  width: auto;
+
+}
+
+
+
+.question-container {
+
+  padding: 25px 15px;
+
+}
+
+
+
+.question-container h2 {
+
+  font-size: 24px;
+
+  line-height: 1.6;
+
+  margin-bottom: 20px;
+
+}
+
+
+
+.timer {
+
+  color: red;
+
+  font-size: 18px;
+
+  margin-bottom: 25px;
+
+}
+
+
+
+.options {
+
+  text-align: right;
+
+  max-width: 300px;
+
+  margin: 0 auto 30px;
+
+}
+
+
+
+.options label {
+
+  display: block;
+
+  margin: 12px 0;
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+}
+
+
+
+button {
+
+  background-color: #ddd;
+
+  padding: 10px 20px;
+
+  border: none;
+
+  font-size: 18px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+}
 
 
 
 
 
   </style>
+
+
+
+
+
+
+
+
 
 
 
@@ -190,11 +252,27 @@
 
 
 
+
+
+
+
+
+
+
+
 <body>
 
 
 
+
+
+
+
 <!-- هذا هو العنصر الذي تحتاجه لتصحيح الأسئلة -->
+
+
+
+
 
 
 
@@ -206,7 +284,19 @@
 
 
 
+
+
+
+
+
+
+
+
   <div class="header">
+
+
+
+
 
 
 
@@ -214,7 +304,15 @@
 
 
 
+
+
+
+
     <img src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo">
+
+
+
+
 
 
 
@@ -222,7 +320,15 @@
 
 
 
+
+
+
+
   </div>
+
+
+
+
 
 
 
@@ -238,7 +344,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
   <div class="content" id="welcome-section">
+
+
+
+
 
 
 
@@ -246,7 +368,15 @@
 
 
 
+
+
+
+
     <div class="box">
+
+
+
+
 
 
 
@@ -254,7 +384,15 @@
 
 
 
+
+
+
+
       <div class="status">
+
+
+
+
 
 
 
@@ -262,7 +400,15 @@
 
 
 
+
+
+
+
         <span class="orange">لم يبدأ بعد</span>
+
+
+
+
 
 
 
@@ -270,7 +416,15 @@
 
 
 
+
+
+
+
       <p>امتحان مكلف بالزبائن</p>
+
+
+
+
 
 
 
@@ -278,11 +432,27 @@
 
 
 
+
+
+
+
     </div>
 
 
 
+
+
+
+
   </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -294,7 +464,15 @@
 
 
 
+
+
+
+
     <div class="question" id="question-text"></div>
+
+
+
+
 
 
 
@@ -302,7 +480,15 @@
 
 
 
+
+
+
+
     <div id="choices"></div>
+
+
+
+
 
 
 
@@ -310,7 +496,15 @@
 
 
 
+
+
+
+
       <button id="prevBtn" onclick="prevQuestion()">السابق</button>
+
+
+
+
 
 
 
@@ -318,11 +512,23 @@
 
 
 
+
+
+
+
     </div>
 
 
 
+
+
+
+
     <div id="result" class="hidden"></div>
+
+
+
+
 
 
 
@@ -334,7 +540,19 @@
 
 
 
+
+
+
+
+
+
+
+
   <script>
+
+
+
+
 
 
 
@@ -342,7 +560,15 @@
 
 
 
+
+
+
+
     function getNameFromURL() {
+
+
+
+
 
 
 
@@ -350,11 +576,27 @@
 
 
 
+
+
+
+
       return params.get("name") || "المترشح";
 
 
 
+
+
+
+
     }
+
+
+
+
+
+
+
+
 
 
 
@@ -366,7 +608,15 @@
 
 
 
+
+
+
+
     document.addEventListener("DOMContentLoaded", function() {
+
+
+
+
 
 
 
@@ -374,7 +624,15 @@
 
 
 
+
+
+
+
       document.getElementById("username").textContent = `مرحبا ${name.replace('.', ' ')}`;
+
+
+
+
 
 
 
@@ -386,7 +644,19 @@
 
 
 
+
+
+
+
+
+
+
+
     // بدء الامتحان
+
+
+
+
 
 
 
@@ -394,7 +664,15 @@
 
 
 
+
+
+
+
       document.getElementById("welcome-section").style.display = "none";
+
+
+
+
 
 
 
@@ -402,11 +680,27 @@
 
 
 
+
+
+
+
       showQuestion();
 
 
 
+
+
+
+
     }
+
+
+
+
+
+
+
+
 
 
 
@@ -422,11 +716,27 @@
 
 
 
+
+
+
+
+
+
+
+
     function addQuestion(q, options, correct) {
 
 
 
+
+
+
+
       questions.push({ q, choices: options, correct });
+
+
+
+
 
 
 
@@ -438,7 +748,19 @@
 
 
 
+
+
+
+
+
+
+
+
 addQuestion("ما هو الرمز المستخدم لتحويل الأموال بين الحسابات البريدية؟", ["RIB", "IBAN", "CCP", "SWIFT"], 2);
+
+
+
+
 
 
 
@@ -446,7 +768,15 @@ addQuestion("متى تأسس بريد الجزائر؟", ["1962", "1975", "1990"
 
 
 
+
+
+
+
 addQuestion("ما هو الحد الأقصى للمبلغ المسموح بسحبه من الموزع الآلي في الجزائر؟", ["10000 دج", "20000 دج", "50000 دج", "100000 دج"], 1);
+
+
+
+
 
 
 
@@ -454,7 +784,15 @@ addQuestion("في حال ضياع البطاقة الذهبية، يجب على 
 
 
 
+
+
+
+
 addQuestion("ما هي الوثيقة الأساسية التي يجب تقديمها عند سحب الأموال من الحساب؟", ["رخصة السياقة", "بطاقة التعريف الوطنية", "جواز السفر فقط", "دفتر العائلة"], 1);
+
+
+
+
 
 
 
@@ -462,7 +800,15 @@ addQuestion("ماذا يعني مصطلح CCP؟", ["حساب بريدي جاري
 
 
 
+
+
+
+
 addQuestion("عند إدخال الرقم السري ثلاث مرات خاطئة، يتم:", ["فتح الحساب", "حذف الحساب", "تجميد البطاقة", "مضاعفة الرصيد"], 2);
+
+
+
+
 
 
 
@@ -470,7 +816,15 @@ addQuestion("كيف يمكن تتبع الطرود البريدية؟", ["عن �
 
 
 
+
+
+
+
 addQuestion("مدة صلاحية البطاقة الذهبية هي:", ["سنة واحدة", "سنتان", "3 سنوات", "5 سنوات"], 2);
+
+
+
+
 
 
 
@@ -478,7 +832,15 @@ addQuestion("ماذا تعني خدمة EMS؟", ["نقل سريع للرسائل
 
 
 
+
+
+
+
 addQuestion("عند التقاعد، يتم صرف المعاش عبر:", ["شيك فقط", "حوالة بريدية", "تحويل بريدي مباشر", "دفع نقدي"], 2);
+
+
+
+
 
 
 
@@ -486,7 +848,15 @@ addQuestion("يُستخدم الرمز السري PIN في:", ["تشغيل ال�
 
 
 
+
+
+
+
 addQuestion("ما هو الفرق بين حوالة عادية وحوالة فورية؟", ["لا فرق", "العادية أسرع", "الفورية أسرع", "الفورية أرخص"], 2);
+
+
+
+
 
 
 
@@ -494,7 +864,15 @@ addQuestion("ما هي أقصى مدة لبقاء طرد بريدي في مكت�
 
 
 
+
+
+
+
 addQuestion("عند استلام الطرد، يجب التحقق من:", ["الوزن فقط", "اسم المستلم", "حجم الطرد", "رائحة الطرد"], 1);
+
+
+
+
 
 
 
@@ -502,7 +880,15 @@ addQuestion("هل يمكن إرسال الأموال عبر البطاقة ال�
 
 
 
+
+
+
+
 addQuestion("ما هو نوع البطاقة التي تتيح الدفع الإلكتروني عبر الإنترنت؟", ["بطاقة الشفاء", "البطاقة الذهبية", "بطاقة الهوية", "بطاقة التقاعد"], 1);
+
+
+
+
 
 
 
@@ -510,7 +896,15 @@ addQuestion("كيف يتم تغيير الرقم السري للبطاقة ال�
 
 
 
+
+
+
+
 addQuestion("عند تسليم طرد يحتوي على مواد خطرة، يجب على العامل:", ["قبوله مباشرة", "رفضه فورًا", "فتحه والتحقق", "سؤاله عن محتواه فقط"], 1);
+
+
+
+
 
 
 
@@ -518,7 +912,15 @@ addQuestion("ما هو الإجراء عند فقدان وثيقة هوية زب
 
 
 
+
+
+
+
 addQuestion("ما هو تطبيق بريد الجزائر الرسمي؟", ["BaridNet", "Edahabia", "BaridiMob", "AlgeriePost"], 2);
+
+
+
+
 
 
 
@@ -526,7 +928,15 @@ addQuestion("عند حدوث خلل في الموزع، على العامل:", [
 
 
 
+
+
+
+
 addQuestion("مدة صلاحية وصل الإيداع؟", ["3 أيام", "7 أيام", "15 يومًا", "لا تنتهي"], 2);
+
+
+
+
 
 
 
@@ -534,7 +944,15 @@ addQuestion("ما هي الجهة المخولة بالمراقبة البريد
 
 
 
+
+
+
+
 addQuestion("كم يبلغ عدد أرقام الحساب البريدي الجاري؟", ["10", "12", "20", "25"], 1);
+
+
+
+
 
 
 
@@ -542,7 +960,15 @@ addQuestion("ما هو رمز المؤسسة البريدية في التحوي�
 
 
 
+
+
+
+
 addQuestion("من هو المسؤول الأول عن الأموال في مكتب البريد؟", ["الحارس", "ساعي البريد", "قابض البريد", "المفتش"], 2);
+
+
+
+
 
 
 
@@ -550,7 +976,15 @@ addQuestion("في حال نشوب حريق داخل المكتب، أول إجر
 
 
 
+
+
+
+
 addQuestion("ما هو المصطلح المقابل للبريد المسجل؟", ["بريد سريع", "بريد مضمون", "بريد عادي", "بريد ناقص"], 1);
+
+
+
+
 
 
 
@@ -558,7 +992,15 @@ addQuestion("عند توقيع العميل، يجب مقارنته بـ:", ["ب
 
 
 
+
+
+
+
 addQuestion("أين تحفظ الأموال مؤقتًا في مكتب البريد؟", ["في الخزنة", "في الرفوف", "تحت الطاولة", "في الدرج"], 0);
+
+
+
+
 
 
 
@@ -566,7 +1008,15 @@ addQuestion("عند اكتشاف ورقة نقدية مزورة، يجب:", ["إ
 
 
 
+
+
+
+
 addQuestion("كم يبلغ عدد محاولات إدخال الرقم السري في الموزع قبل حجز البطاقة؟", ["2", "3", "4", "5"], 1);
+
+
+
+
 
 
 
@@ -574,7 +1024,15 @@ addQuestion("هل يمكن فتح حساب بريدي بدون وثيقة هوي
 
 
 
+
+
+
+
 addQuestion("عند استلام الأموال من الزبون، يجب:", ["عدّها علنًا", "وضعها فورًا في الدرج", "طلب بطاقة الهوية", "شكره فقط"], 0);
+
+
+
+
 
 
 
@@ -582,7 +1040,15 @@ addQuestion("عند تلقي شكوى، أول إجراء هو:", ["رفضها",
 
 
 
+
+
+
+
 addQuestion("عند إرسال طرد خارج الوطن، يجب تقديم:", ["جواز سفر", "بطاقة هوية", "بيان جمركي", "دفتر العائلة"], 2);
+
+
+
+
 
 
 
@@ -590,7 +1056,15 @@ addQuestion("ما هو النظام الذي يستخدم لتسجيل المع�
 
 
 
+
+
+
+
 addQuestion("ما هي طريقة إرسال الأموال داخليًا دون حساب؟", ["شيك", "حوالة بريدية", "بطاقة ذهبية", "تحويل بنكي"], 1);
+
+
+
+
 
 
 
@@ -598,7 +1072,15 @@ addQuestion("يمنع إرسال المواد التالية عبر البريد
 
 
 
+
+
+
+
 addQuestion("عند رفض الزبون دفع رسوم الخدمة، يتم:", ["إلغاؤها", "تحويله للشرطة", "شرحها وتوضيحها له", "إرجاع الطرد فورًا"], 2);
+
+
+
+
 
 
 
@@ -606,7 +1088,15 @@ addQuestion("ما هو الحد الأقصى للوزن المسموح به في
 
 
 
+
+
+
+
 addQuestion("هل يمكن تفويض شخص لسحب الأموال من حساب آخر؟", ["نعم بوثيقة تفويض", "لا", "فقط من الأقارب", "بالهاتف فقط"], 0);
+
+
+
+
 
 
 
@@ -614,7 +1104,15 @@ addQuestion("عند إدخال بطاقة غير صالحة في الموزع، 
 
 
 
+
+
+
+
 addQuestion("التاريخ الذي يُطبع على وصل السحب هو:", ["تاريخ الميلاد", "تاريخ العملية", "تاريخ الصرف", "تاريخ البطاقة"], 1);
+
+
+
+
 
 
 
@@ -622,7 +1120,15 @@ addQuestion("ما هي الجهة المسؤولة عن إصدار الطواب�
 
 
 
+
+
+
+
 addQuestion("عند امتلاء صندوق الطرود، يجب:", ["تجاهله", "إغلاقه", "إعلام المسؤول", "فتح الباب"], 2);
+
+
+
+
 
 
 
@@ -630,7 +1136,15 @@ addQuestion("ما هي الميزة الرئيسية للبريد العاجل E
 
 
 
+
+
+
+
 addQuestion("هل يمكن استخدام البطاقة الذهبية لسحب راتب التقاعد؟", ["لا", "نعم", "فقط في المكاتب", "فقط للموظفين"], 1);
+
+
+
+
 
 
 
@@ -638,7 +1152,15 @@ addQuestion("كم مرة في السنة يتم تجديد البطاقة الذ
 
 
 
+
+
+
+
 addQuestion("عند وجود خطأ في اسم المستفيد على الطرد، يجب:", ["تسليمه", "رفضه", "تمزيقه", "سحبه"], 1);
+
+
+
+
 
 
 
@@ -646,11 +1168,23 @@ addQuestion("عند إرسال حوالة بريدية بمبلغ 10,000 دج، 
 
 
 
+
+
+
+
 addQuestion("أي من العمليات التالية تتطلب التحقق المزدوج؟", ["سحب من ATM", "الدفع عبر الإنترنت", "الاطلاع على الرصيد", "شحن الهاتف"], 1);
 
 
 
+
+
+
+
 addQuestion("في حالة اختلاف بيانات المستلم في الطرد، فإن العامل البريدي يجب أن:", ["يسلم الطرد", "يعيد الطرد", "يحتفظ بالطرد", "يرسل نسخة للمصلحة"], 1);
+
+
+
+
 
 
 
@@ -662,7 +1196,19 @@ addQuestion("ما هو الإجراء المتخذ في حالة عدم تسلم
 
 
 
+
+
+
+
+
+
+
+
 let currentQuestion = 0;
+
+
+
+
 
 
 
@@ -670,7 +1216,15 @@ let answers = Array(questions.length).fill(null);
 
 
 
+
+
+
+
 let timers = Array(questions.length).fill(120); // 120 ثانية
+
+
+
+
 
 
 
@@ -682,7 +1236,19 @@ let timerInterval;
 
 
 
+
+
+
+
+
+
+
+
 function showQuestion() {
+
+
+
+
 
 
 
@@ -694,7 +1260,19 @@ function showQuestion() {
 
 
 
+
+
+
+
+
+
+
+
   const q = questions[currentQuestion];
+
+
+
+
 
 
 
@@ -702,7 +1280,15 @@ function showQuestion() {
 
 
 
+
+
+
+
   const choicesDiv = document.getElementById("choices");
+
+
+
+
 
 
 
@@ -714,7 +1300,19 @@ function showQuestion() {
 
 
 
+
+
+
+
+
+
+
+
   q.choices.forEach((choice, index) => {
+
+
+
+
 
 
 
@@ -722,7 +1320,15 @@ function showQuestion() {
 
 
 
+
+
+
+
     const input = document.createElement("input");
+
+
+
+
 
 
 
@@ -730,7 +1336,15 @@ function showQuestion() {
 
 
 
+
+
+
+
     input.name = "choice";
+
+
+
+
 
 
 
@@ -738,7 +1352,15 @@ function showQuestion() {
 
 
 
+
+
+
+
     input.disabled = (timers[currentQuestion] <= 0 || answers[currentQuestion] !== null);
+
+
+
+
 
 
 
@@ -750,7 +1372,19 @@ function showQuestion() {
 
 
 
+
+
+
+
+
+
+
+
     input.addEventListener("change", () => {
+
+
+
+
 
 
 
@@ -758,7 +1392,15 @@ function showQuestion() {
 
 
 
+
+
+
+
         answers[currentQuestion] = index;
+
+
+
+
 
 
 
@@ -766,7 +1408,15 @@ function showQuestion() {
 
 
 
+
+
+
+
       }
+
+
+
+
 
 
 
@@ -778,7 +1428,19 @@ function showQuestion() {
 
 
 
+
+
+
+
+
+
+
+
     label.appendChild(input);
+
+
+
+
 
 
 
@@ -786,11 +1448,27 @@ function showQuestion() {
 
 
 
+
+
+
+
     choicesDiv.appendChild(label);
 
 
 
+
+
+
+
   });
+
+
+
+
+
+
+
+
 
 
 
@@ -806,7 +1484,19 @@ function showQuestion() {
 
 
 
+
+
+
+
+
+
+
+
   startTimer();
+
+
+
+
 
 
 
@@ -818,7 +1508,19 @@ function showQuestion() {
 
 
 
+
+
+
+
+
+
+
+
 function startTimer() {
+
+
+
+
 
 
 
@@ -830,7 +1532,19 @@ function startTimer() {
 
 
 
+
+
+
+
+
+
+
+
   if (timers[currentQuestion] <= 0) {
+
+
+
+
 
 
 
@@ -838,11 +1552,27 @@ function startTimer() {
 
 
 
+
+
+
+
     return;
 
 
 
+
+
+
+
   }
+
+
+
+
+
+
+
+
 
 
 
@@ -858,11 +1588,27 @@ function startTimer() {
 
 
 
+
+
+
+
+
+
+
+
   timerInterval = setInterval(() => {
 
 
 
+
+
+
+
     timers[currentQuestion]--;
+
+
+
+
 
 
 
@@ -874,7 +1620,19 @@ function startTimer() {
 
 
 
+
+
+
+
+
+
+
+
     if (timers[currentQuestion] <= 0) {
+
+
+
+
 
 
 
@@ -882,7 +1640,15 @@ function startTimer() {
 
 
 
+
+
+
+
       timerElement.textContent = "انتهى الوقت لهذا السؤال.";
+
+
+
+
 
 
 
@@ -890,7 +1656,15 @@ function startTimer() {
 
 
 
+
+
+
+
       setTimeout(nextQuestion, 1000);
+
+
+
+
 
 
 
@@ -898,11 +1672,27 @@ function startTimer() {
 
 
 
+
+
+
+
   }, 1000);
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -914,7 +1704,15 @@ function disableChoices() {
 
 
 
+
+
+
+
   const inputs = document.querySelectorAll("input[name='choice']");
+
+
+
+
 
 
 
@@ -922,7 +1720,19 @@ function disableChoices() {
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -934,7 +1744,15 @@ function nextQuestion() {
 
 
 
+
+
+
+
   if (currentQuestion < questions.length - 1) {
+
+
+
+
 
 
 
@@ -942,7 +1760,15 @@ function nextQuestion() {
 
 
 
+
+
+
+
     showQuestion();
+
+
+
+
 
 
 
@@ -950,7 +1776,15 @@ function nextQuestion() {
 
 
 
+
+
+
+
     finishQuiz();
+
+
+
+
 
 
 
@@ -958,7 +1792,19 @@ function nextQuestion() {
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -970,7 +1816,15 @@ function prevQuestion() {
 
 
 
+
+
+
+
   if (currentQuestion > 0 && answers[currentQuestion - 1] === null) {
+
+
+
+
 
 
 
@@ -978,7 +1832,15 @@ function prevQuestion() {
 
 
 
+
+
+
+
     showQuestion();
+
+
+
+
 
 
 
@@ -986,7 +1848,19 @@ function prevQuestion() {
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -998,7 +1872,15 @@ function finishQuiz() {
 
 
 
+
+
+
+
   clearInterval(timerInterval);
+
+
+
+
 
 
 
@@ -1006,11 +1888,23 @@ function finishQuiz() {
 
 
 
+
+
+
+
   document.getElementById("choices").classList.add("hidden");
 
 
 
+
+
+
+
   document.getElementById("timer").classList.add("hidden");
+
+
+
+
 
 
 
@@ -1022,7 +1916,19 @@ function finishQuiz() {
 
 
 
+
+
+
+
+
+
+
+
   let correct = 0;
+
+
+
+
 
 
 
@@ -1034,7 +1940,19 @@ function finishQuiz() {
 
 
 
+
+
+
+
+
+
+
+
   questions.forEach((q, i) => {
+
+
+
+
 
 
 
@@ -1042,7 +1960,15 @@ function finishQuiz() {
 
 
 
+
+
+
+
       if (answers[i] === q.correct) {
+
+
+
+
 
 
 
@@ -1050,7 +1976,15 @@ function finishQuiz() {
 
 
 
+
+
+
+
       } else {
+
+
+
+
 
 
 
@@ -1058,7 +1992,15 @@ function finishQuiz() {
 
 
 
+
+
+
+
       }
+
+
+
+
 
 
 
@@ -1066,7 +2008,19 @@ function finishQuiz() {
 
 
 
+
+
+
+
   });
+
+
+
+
+
+
+
+
 
 
 
@@ -1078,7 +2032,19 @@ function finishQuiz() {
 
 
 
+
+
+
+
   if (finalScore < 0) finalScore = 0;
+
+
+
+
+
+
+
+
 
 
 
@@ -1090,7 +2056,19 @@ function finishQuiz() {
 
 
 
+
+
+
+
   resultDiv.classList.remove("hidden");
+
+
+
+
+
+
+
+
 
 
 
@@ -1102,7 +2080,15 @@ function finishQuiz() {
 
 
 
+
+
+
+
   if (finalScore >= Math.ceil(questions.length / 2)) {
+
+
+
+
 
 
 
@@ -1110,11 +2096,23 @@ function finishQuiz() {
 
 
 
+
+
+
+
   } else {
 
 
 
+
+
+
+
     message = `<span style=\"color: red;\">❌ للأسف، حظ موفق في المرة القادمة</span>`;
+
+
+
+
 
 
 
@@ -1126,7 +2124,19 @@ function finishQuiz() {
 
 
 
+
+
+
+
+
+
+
+
   resultDiv.innerHTML = `
+
+
+
+
 
 
 
@@ -1134,7 +2144,15 @@ function finishQuiz() {
 
 
 
+
+
+
+
     <p>عدد الإجابات الصحيحة: ${correct}</p>
+
+
+
+
 
 
 
@@ -1142,7 +2160,15 @@ function finishQuiz() {
 
 
 
+
+
+
+
     <p><strong>علامتك النهائية: ${finalScore} من ${questions.length}</strong></p>
+
+
+
+
 
 
 
@@ -1150,7 +2176,15 @@ function finishQuiz() {
 
 
 
+
+
+
+
     <button onclick=\"showCorrectionPage()\">تصحيح الاختبار</button>
+
+
+
+
 
 
 
@@ -1158,7 +2192,19 @@ function finishQuiz() {
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -1170,11 +2216,23 @@ function showCorrectionPage() {
 
 
 
+
+
+
+
   document.getElementById("result").classList.add("hidden");
 
 
 
+
+
+
+
   const correctionSection = document.getElementById("correction-section");
+
+
+
+
 
 
 
@@ -1186,11 +2244,27 @@ function showCorrectionPage() {
 
 
 
+
+
+
+
+
+
+
+
   questions.forEach((q, index) => {
 
 
 
+
+
+
+
     const userAnswer = answers[index];
+
+
+
+
 
 
 
@@ -1202,7 +2276,19 @@ function showCorrectionPage() {
 
 
 
+
+
+
+
+
+
+
+
     const div = document.createElement("div");
+
+
+
+
 
 
 
@@ -1210,11 +2296,23 @@ function showCorrectionPage() {
 
 
 
+
+
+
+
     div.style.marginBottom = "10px";
 
 
 
+
+
+
+
     div.style.borderRadius = "10px";
+
+
+
+
 
 
 
@@ -1226,7 +2324,19 @@ function showCorrectionPage() {
 
 
 
+
+
+
+
+
+
+
+
     div.innerHTML = `
+
+
+
+
 
 
 
@@ -1234,11 +2344,23 @@ function showCorrectionPage() {
 
 
 
+
+
+
+
       <p>✔️ الإجابة الصحيحة: ${q.choices[correctAnswer]}</p>
 
 
 
+
+
+
+
       <p>📝 إجابتك: ${userAnswer !== null ? q.choices[userAnswer] : "لم يجب"}</p>
+
+
+
+
 
 
 
@@ -1250,7 +2372,19 @@ function showCorrectionPage() {
 
 
 
+
+
+
+
+
+
+
+
     correctionSection.appendChild(div);
+
+
+
+
 
 
 
@@ -1262,7 +2396,19 @@ function showCorrectionPage() {
 
 
 
+
+
+
+
+
+
+
+
   correctionSection.classList.remove("hidden");
+
+
+
+
 
 
 
@@ -1274,7 +2420,19 @@ function showCorrectionPage() {
 
 
 
+
+
+
+
+
+
+
+
 </script>
+
+
+
+
 
 
 
@@ -1282,7 +2440,15 @@ function showCorrectionPage() {
 
 
 
+
+
+
+
 </html>
+
+
+
+
 
 
 
