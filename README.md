@@ -1,780 +1,124 @@
 <!DOCTYPE html>
 
-
-
-<html lang="ar" dir="rtl">
-
-
+<html lang="ar">
 
 <head>
 
-
-
   <meta charset="UTF-8">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-  <title>مركز الامتحان - بريد الجزائر</title>
-
-
+  <title>اختبار بريد الجزائر</title>
 
   <style>
 
-
-
     body {
 
+      font-family: 'Arial', sans-serif;
 
+      direction: rtl;
 
-
-
-
-
-      font-family: Arial, sans-serif;
-
-
+      text-align: right;
 
       background-color: #f9f9f9;
 
-
-
-      margin: 0;
-
-
-
-      padding: 0;
-
-
-
-
-
-
+      padding: 20px;
 
     }
 
+    #quiz-container {
 
+      max-width: 700px;
 
+      margin: auto;
 
+      background-color: #fff;
 
+      padding: 20px;
 
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
-  .header {
-
-
-
-  display: flex;
-
-
-
-  justify-content: space-between;
-
-
-
-  align-items: center;
-
-
-
-  padding: 10px 20px;
-
-
-
-  background-color: #fff;
-
-
-
-  border-bottom: 1px solid #ccc;
-
-
-
-}
-
-
-
-
-
-
-
-.header-content {
-
-
-
-  display: flex;
-
-
-
-  align-items: center;
-
-
-
-  gap: 10px; /* المسافة المتوازنة بين النص والشعار */
-
-
-
-}
-
-
-
-
-
-
-
-.header-content span {
-
-
-
-  font-size: 20px;
-
-
-
-  font-weight: bold;
-
-
-
-}
-
-
-
-
-
-
-
-.header-content img {
-
-
-
-  height: 80px;
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-    .content {
-
-
-
-
-
-
-
-      text-align: center;
-
-
-
-
-
-
-
-      padding: 30px;
-
-
-
-
+      border-radius: 8px;
 
     }
-
-
-
-
-
-.box {
-
-
-
-  background-color: #fff;
-
-
-
-  border: 1px solid #ddd;
-
-
-
-  border-radius: 15px;
-
-
-
-  padding: 20px;
-
-
-
-  display: inline-block;
-
-
-
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-
-
-
-
-
-
-
-  width: 70%;
-
-
-
-  max-width: 800px;
-
-
-
-  min-width: 300px;
-
-
-
-
-
-
-
-  margin: 0 auto;
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-
-    .status {
-
-
-
-
-
-
-
-      display: flex;
-
-
-
-
-
-
-
-      justify-content: center;
-
-
-
-
-
-
-
-      align-items: center;
-
-
-
-
-
-
-
-      margin: 10px 0;
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-
-    .status span {
-
-
-
-
-
-
-
-      background-color: #f0f0f0;
-
-
-
-
-
-
-
-      border-radius: 10px;
-
-
-
-
-
-
-
-      padding: 5px 10px;
-
-
-
-
-
-
-
-      margin-right: 10px;
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-
-    .status .orange {
-
-
-
-
-
-
-
-      background-color: orange;
-
-
-
-
-
-
-
-      color: white;
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-
-    button {
-
-
-
-
-
-
-
-      padding: 10px 20px;
-
-
-
-
-
-
-
-      margin-top: 20px;
-
-
-
-
-
-
-
-      font-size: 18px;
-
-
-
-
-
-
-
-      border: none;
-
-
-
-
-
-
-
-      border-radius: 10px;
-
-
-
-
-
-
-
-      background-color: #ddd;
-
-
-
-
-
-
-
-      cursor: pointer;
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    #exam-section {
-
-
-
-
-
-
-
-      display: none;
-
-
-
-
-
-
-
-      padding: 40px;
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
 
     .question {
 
-
-
-
-
-
-
-      font-size: 40px;
-
-
-
-
-
-
-
       font-weight: bold;
 
-
-
-
-
-
+      margin-bottom: 10px;
 
     }
 
-
-
-
-
-
-
-    label {
-
-
-
-
-
-
+    .options label {
 
       display: block;
 
-
-
-
-
-
-
-      margin: 8px 0;
-
-
-
-
-
-
+      margin-bottom: 8px;
 
     }
-
-
-
-
-
-
-
-    .hidden {
-
-
-
-
-
-
-
-      display: none;
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
 
     #timer {
 
+      font-weight: bold;
 
+      color: #d9534f;
 
+      margin-bottom: 20px;
 
+    }
 
+    #result {
 
+      font-size: 20px;
 
       font-weight: bold;
 
-
-
-
-
-
-
-      color: red;
-
-
-
-
-
-
-
-      margin: 10px 0;
-
-
-
-
-
-
+      color: green;
 
     }
 
+    #navigation {
 
-
-
-
-
-
-    #nav-buttons {
-
-
-
-
-
-
-
-      margin-top: 15px;
-
-
-
-
-
-
+      margin-top: 20px;
 
     }
 
+    button {
 
+      padding: 10px 15px;
 
+      font-size: 16px;
 
+      margin-left: 10px;
 
+      border: none;
 
+      border-radius: 5px;
+
+      cursor: pointer;
+
+    }
+
+    .locked {
+
+      color: grey;
+
+    }
 
   </style>
 
-
-
 </head>
-
-
 
 <body>
 
-  
+  <div id="quiz-container">
 
-      
+    <div id="timer">الوقت المتبقي: 120 ثانية</div>
 
-  <div class="header">
+    <form id="quiz-form">
 
-  <div class="header-content">
-
-  <img src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo">
-
-  <span>مركز الامتحان</span>
-
-  </div>
-
-</div>
-
-
-
-
-
-  <div class="content" id="welcome-section">
-
-    <h2 id="username">مرحبا المترشح</h2>
-
-    <div class="box">
-
-      <h3> مكلف بالزبائن</h3>
-
-      <div class="status">
-
-        <span>55 الأسئلة</span>
-
-        <span class="orange">لم يبدأ بعد</span>
-
-      </div>
-
-      <p>امتحان مكلف بالزبائن</p>
-
-      <button onclick="startExam()">بدء الامتحان</button>
-
-    </div>
-
-  </div>
-
-
-
-  <div id="exam-section">
-
-    <div class="question" id="question-text"></div>
-
-    <div id="timer"></div>
-
-    <div id="choices"></div>
-
-    <div id="nav-buttons">
-
-      <button id="prevBtn" onclick="prevQuestion()">السابق</button>
-
-      <button onclick="nextQuestion()">التالي</button>
-
-    </div>
-
-    <div id="result" class="hidden"></div>
-
-  </div>
-
-
-
-  <script>
-
-    // التقاط الاسم من الرابط
-
-    function getNameFromURL() {
-
-      const params = new URLSearchParams(window.location.search);
-
-      return params.get("name") || "المترشح";
-
-    }
-
-
-
-    // عرض الاسم
-
-    document.addEventListener("DOMContentLoaded", function() {
-
-      const name = getNameFromURL();
-
-      document.getElementById("username").textContent = `مرحبا ${name.replace('.', ' ')}`;
-
-    });
-
-
-
-    // بدء الامتحان
-
-    function startExam() {
-
-      document.getElementById("welcome-section").style.display = "none";
-
-      document.getElementById("exam-section").style.display = "block";
-
-      showQuestion();
-
-    }
-
-
-
-    const questions = [];
-
-
-
-    function addQuestion(q, options, correct) {
-
-      questions.push({ q, choices: options, correct });
-
-    }
-
-
-
-    // إضافة الأسئلة
-
-    addQuestion("ما هي الوثائق المطلوبة لفتح حساب بريدي جاري؟", ["نسخة من شهادة الميلاد", "الوثيقة CH1 + نسخة من بطاقة الهوية", "بطاقة إقامة", "شهادة عمل"], 1);
+      addQuestion("ما هي الوثائق المطلوبة لفتح حساب بريدي جاري؟", ["نسخة من شهادة الميلاد", "الوثيقة CH1 + نسخة من بطاقة الهوية", "بطاقة إقامة", "شهادة عمل"], 1);
 
     addQuestion("ما هو الحد الأقصى اليومي للتحويل من حساب إلى حساب عبر الصراف؟", ["20,000 دج", "30,000 دج", "50,000 دج", "100,000 دج"], 2);
 
@@ -884,125 +228,83 @@
 
     addQuestion("كيف يمكن تطوير الكفاءة المهنية؟", ["التكوين المستمر", "الراحة فقط", "العمل الروتيني", "تجاهل التعليمات"], 0);
 
-    
+      <!-- سيتم إدخال الأسئلة هنا يدوياً -->
+
+    </form>
+
+    <div id="navigation">
+
+      <button type="button" onclick="previousQuestion()">السابق</button>
+
+      <button type="button" onclick="nextQuestion()">التالي</button>
+
+    </div>
+
+    <div id="result" style="display: none;"></div>
+
+  </div>
+
+
+
+  <script>
 
     let currentQuestion = 0;
 
-    let answers = Array(questions.length).fill(null);
+    let questions = [];
 
-    let timers = Array(questions.length).fill(120); // 120 ثانية
+    let timeLeft = [];
 
-    let timerInterval;
+    let timers = [];
 
-
-
-    function showQuestion() {
-
-      clearInterval(timerInterval);
+    let locked = [];
 
 
 
-      const q = questions[currentQuestion];
+    document.addEventListener("DOMContentLoaded", () => {
 
-      document.getElementById("question-text").textContent = `السؤال ${currentQuestion + 1}: ${q.q}`;
+      questions = document.querySelectorAll(".question-block");
 
-      const choicesDiv = document.getElementById("choices");
+      questions.forEach((q, index) => {
 
-      choicesDiv.innerHTML = "";
+        q.style.display = "none";
 
+        timeLeft[index] = 120;
 
-
-      q.choices.forEach((choice, index) => {
-
-        const label = document.createElement("label");
-
-        const input = document.createElement("input");
-
-        input.type = "radio";
-
-        input.name = "choice";
-
-        input.value = index;
-
-        input.disabled = (timers[currentQuestion] <= 0 || answers[currentQuestion] !== null);
-
-        if (answers[currentQuestion] === index) input.checked = true;
-
-
-
-        input.addEventListener("change", () => {
-
-          if (answers[currentQuestion] === null) {
-
-            answers[currentQuestion] = index;
-
-            disableChoices(); // غلق الاختيارات بعد الإجابة
-
-          }
-
-        });
-
-
-
-        label.appendChild(input);
-
-        label.appendChild(document.createTextNode(" " + choice));
-
-        choicesDiv.appendChild(label);
+        locked[index] = false;
 
       });
 
+      if (questions.length > 0) {
 
+        questions[0].style.display = "block";
 
-      // إخفاء زر السابق إذا كنا في السؤال الأول
-
-      document.getElementById("prevBtn").style.display = currentQuestion === 0 ? "none" : "inline";
-
-
-
-      startTimer();
-
-    }
-
-
-
-    function startTimer() {
-
-      const timerElement = document.getElementById("timer");
-
-
-
-      if (timers[currentQuestion] <= 0) {
-
-        timerElement.textContent = "انتهى الوقت لهذا السؤال.";
-
-        return;
+        startTimer(currentQuestion);
 
       }
 
-
-
-      timerElement.textContent = `الوقت المتبقي: ${timers[currentQuestion]} ثانية`;
-
-
-
-      timerInterval = setInterval(() => {
-
-        timers[currentQuestion]--;
-
-        timerElement.textContent = `الوقت المتبقي: ${timers[currentQuestion]} ثانية`;
+    });
 
 
 
-        if (timers[currentQuestion] <= 0) {
+    function startTimer(index) {
 
-          clearInterval(timerInterval);
+      const timerDisplay = document.getElementById("timer");
 
-          timerElement.textContent = "انتهى الوقت لهذا السؤال.";
+      timers[index] = setInterval(() => {
 
-          disableChoices();
+        if (timeLeft[index] > 0) {
 
-          setTimeout(nextQuestion, 1000); // ينتقل تلقائيًا بعد ثانية
+          timeLeft[index]--;
+
+          timerDisplay.textContent = `الوقت المتبقي: ${timeLeft[index]} ثانية`;
+
+        } else {
+
+          clearInterval(timers[index]);
+
+          lockQuestion(index);
+
+          nextQuestion();
 
         }
 
@@ -1012,11 +314,31 @@
 
 
 
-    function disableChoices() {
+    function lockQuestion(index) {
 
-      const inputs = document.querySelectorAll("input[name='choice']");
+      if (!locked[index]) {
 
-      inputs.forEach(input => input.disabled = true);
+        const options = questions[index].querySelectorAll("input[type=radio]");
+
+        options.forEach(opt => opt.disabled = true);
+
+        questions[index].classList.add("locked");
+
+        locked[index] = true;
+
+      }
+
+    }
+
+
+
+    function showQuestion(index) {
+
+      questions.forEach((q, i) => q.style.display = "none");
+
+      questions[index].style.display = "block";
+
+      document.getElementById("timer").textContent = `الوقت المتبقي: ${timeLeft[index]} ثانية`;
 
     }
 
@@ -1024,11 +346,17 @@
 
     function nextQuestion() {
 
+      lockQuestion(currentQuestion);
+
       if (currentQuestion < questions.length - 1) {
+
+        clearInterval(timers[currentQuestion]);
 
         currentQuestion++;
 
-        showQuestion();
+        showQuestion(currentQuestion);
+
+        if (!locked[currentQuestion]) startTimer(currentQuestion);
 
       } else {
 
@@ -1040,13 +368,17 @@
 
 
 
-    function prevQuestion() {
+    function previousQuestion() {
 
-      if (currentQuestion > 0 && answers[currentQuestion - 1] === null) {
+      if (currentQuestion > 0) {
+
+        clearInterval(timers[currentQuestion]);
 
         currentQuestion--;
 
-        showQuestion();
+        showQuestion(currentQuestion);
+
+        if (!locked[currentQuestion]) startTimer(currentQuestion);
 
       }
 
@@ -1056,87 +388,29 @@
 
     function finishQuiz() {
 
-  clearInterval(timerInterval);
+      clearInterval(timers[currentQuestion]);
 
-  document.getElementById("question-text").classList.add("hidden");
+      let score = 0;
 
-  document.getElementById("choices").classList.add("hidden");
+      questions.forEach((q, i) => {
 
-  document.getElementById("timer").classList.add("hidden");
+        const selected = q.querySelector("input[type=radio]:checked");
 
-  document.getElementById("nav-buttons").classList.add("hidden");
+        if (selected && selected.value === q.dataset.correct) score++;
 
+      });
 
+      document.getElementById("quiz-form").style.display = "none";
 
-  let correct = 0;
+      document.getElementById("navigation").style.display = "none";
 
-  let wrong = 0;
+      document.getElementById("timer").style.display = "none";
 
+      document.getElementById("result").style.display = "block";
 
-
-  questions.forEach((q, i) => {
-
-    if (answers[i] !== null && timers[i] > 0) {
-
-      if (answers[i] === q.correct) {
-
-        correct++;
-
-      } else {
-
-        wrong++;
-
-      }
+      document.getElementById("result").textContent = `نتيجتك: ${score} من ${questions.length}`;
 
     }
-
-  });
-
-
-
-  let finalScore = correct - wrong;
-
-  if (finalScore < 0) finalScore = 0;
-
-
-
-  const resultDiv = document.getElementById("result");
-
-  resultDiv.classList.remove("hidden");
-
-
-
-  let message = "";
-
-  if (finalScore >= Math.ceil(questions.length / 2)) {
-
-    message = `<span style="color: green;">✔️ مبروك! لقد نجحت</span>`;
-
-  } else {
-
-    message = `<span style="color: red;">❌ للأسف، حظ موفق في المرة القادمة</span>`;
-
-  }
-
-
-
-  resultDiv.innerHTML = `
-
-    <h2>انتهى الاختبار</h2>
-
-    <p>عدد الإجابات الصحيحة: ${correct}</p>
-
-    <p>عدد الإجابات الخاطئة: ${wrong}</p>
-
-    <p><strong>علامتك النهائية: ${finalScore} من ${questions.length}</strong></p>
-
-    <p>${message}</p>
-
-  `;
-
-}
-
-
 
   </script>
 
