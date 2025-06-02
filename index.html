@@ -1,23 +1,14 @@
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
-
 <head>
-
   <meta charset="UTF-8">
-
   <title>مركز الامتحان - بريد الجزائر</title>
-
   <style>
-
     body {
 
       font-family: Arial, sans-serif;
-
       background-color: #f9f9f9;
-
       margin: 0;
-
       padding: 0;
 
     }
@@ -178,21 +169,20 @@
       margin-top: 15px;
 
     }
-    
-      
+
   </style>
 
 </head>
 
 <body>
 
-  <!-- الهيدر -->
   <div class="header">
-    <!-- شعار + اسم المركز -->
-    <div class="logo-title">
-      <img src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo" class="logo">
-      <div class="center-name">مركز الامتحان</div>
-    </div>
+  <div class="header-content">
+    <span>مركز الامتحان</span>
+    <img src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo">
+  </div>
+</div>
+
 
   <div class="content" id="welcome-section">
     <h2 id="username">مرحبا المترشح</h2>
@@ -219,10 +209,6 @@
   </div>
 
   <script>
-    function changeLanguage(lang) {
-      alert("تم تغيير اللغة إلى: " + lang);
-      // هنا يمكنك تنفيذ منطق تغيير اللغة الحقيقي حسب الحاجة
-    }
     // التقاط الاسم من الرابط
     function getNameFromURL() {
       const params = new URLSearchParams(window.location.search);
