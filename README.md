@@ -52,7 +52,7 @@
 
   align-items: center;
 
-  gap: 80px; /* المسافة المتوازنة بين النص والشعار */
+  gap: 10px; /* المسافة المتوازنة بين النص والشعار */
 
 }
 
@@ -70,7 +70,7 @@
 
 .header-content img {
 
-  height: 50px;
+  height: 80px;
 
 }
 
@@ -92,33 +92,47 @@
 
     }
 
+body {
 
+  background-color: #f9f9f9;
 
-    .box {
+  font-family: 'Arial', sans-serif;
 
+  text-align: center;
 
+  padding: 50px;
 
-      background-color: #fff;
+  margin: 0;
 
-
-
-      border: 1px solid #ddd;
-
-
-
-      border-radius: 15px;
-
-
-
-      padding: 20px;
+}
 
 
 
-      display: inline-block;
+.box {
+
+  background-color: #fff;
+
+  border: 1px solid #ddd;
+
+  border-radius: 15px;
+
+  padding: 20px;
+
+  display: inline-block;
+
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
 
 
-      box-shadow: 1 1 10px rgba(0,0,0,0.1);
+  width: 70%;
+
+  max-width: 800px;
+
+  min-width: 300px;
+
+
+
+  margin: 0 auto;
 
 
 
