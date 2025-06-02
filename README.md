@@ -1,26 +1,14 @@
 <!DOCTYPE html>
 
-
-
 <html lang="ar" dir="rtl">
-
-
 
 <head>
 
-
-
   <meta charset="UTF-8">
-
-
 
   <title>مركز الامتحان - بريد الجزائر</title>
 
-
-
   <style>
-
-
 
     body {
 
@@ -28,15 +16,9 @@
 
       font-family: Arial, sans-serif;
 
-
-
       background-color: #f9f9f9;
 
-
-
       margin: 0;
-
-
 
       padding: 0;
 
@@ -64,29 +46,13 @@
 
 
 
-.header {
-
-  display: flex;
-
-  justify-content: center; /* توسيط المحتوى الكامل */
-
-  padding: 10px 20px;
-
-  background-color: #fff;
-
-  border-bottom: 1px solid #ccc;
-
-}
-
-
-
 .header-content {
 
   display: flex;
 
   align-items: center;
 
-  gap: 40px; /* المسافة المتوازنة بين النص والشعار */
+  gap: 80px; /* المسافة المتوازنة بين النص والشعار */
 
 }
 
@@ -104,7 +70,7 @@
 
 .header-content img {
 
-  height: 40px;
+  height: 50px;
 
 }
 
@@ -152,7 +118,7 @@
 
 
 
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 1 1 10px rgba(0,0,0,0.1);
 
 
 
@@ -358,9 +324,7 @@
 
     }
 
-    
 
-      
 
   </style>
 
@@ -374,19 +338,19 @@
 
 
 
-  <!-- الهيدر -->
-
   <div class="header">
 
-    <!-- شعار + اسم المركز -->
+  <div class="header-content">
 
-    <div class="logo-title">
+    <span>مركز الامتحان</span>
 
-      <img src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo" class="logo">
+    <img src="https://i.postimg.cc/qv9RbZRT/images-15.jpg" alt="Logo">
 
-      <div class="center-name">مركز الامتحان</div>
+  </div>
 
-    </div>
+</div>
+
+
 
 
 
@@ -439,14 +403,6 @@
 
 
   <script>
-
-    function changeLanguage(lang) {
-
-      alert("تم تغيير اللغة إلى: " + lang);
-
-      // هنا يمكنك تنفيذ منطق تغيير اللغة الحقيقي حسب الحاجة
-
-    }
 
     // التقاط الاسم من الرابط
 
