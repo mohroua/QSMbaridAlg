@@ -329,8 +329,22 @@
 
 
 <body>
-
-
+  
+  <div id="exam-container">
+    <!-- زر بدء الامتحان -->
+    <button id="startBtn" onclick="startExam()">بدء الامتحان</button>
+    
+    <!-- رسالة الإقصاء -->
+    <p id="excludedMessage" style="color: red; display: none;">
+      تم إقصاؤك من الامتحان بسبب الخروج أو تحديث الصفحة.
+    </p>
+    
+    <!-- هنا ضع الأسئلة والعداد والنتيجة لاحقًا -->
+    <div id="quizContent" style="display: none;">
+      <!-- محتوى الامتحان سيظهر هنا عند البدء -->
+    </div>
+  </div>
+  
 
   <div class="header">
 
@@ -598,316 +612,248 @@
 
     let timerInterval;
 
-  
+function showQuestion() {
+      clearInterval(timerInterval);
 
-  function showQuestion() {
+      const q = questions[currentQuestion];
+      document.getElementById("question-text").textContent = `السؤال ${currentQuestion + 1}: ${q.q}`;
+      const choicesDiv = document.getElementById("choices");
+      choicesDiv.innerHTML = "";
 
-  clearInterval(timerInterval);
+      q.choices.forEach((choice, index) => {
+        const label = document.createElement("label");
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "choice";
+        input.value = index;
+        input.disabled = (timers[currentQuestion] <= 0 || answers[currentQuestion] !== null);
+        if (answers[currentQuestion] === index) input.checked = true;
 
+        input.addEventListener("change", () => {
+          if (answers[currentQuestion] === null) {
+            answers[currentQuestion] = index;
+            disableChoices(); // غلق الاختيارات بعد الإجابة
+          }
+        });
 
-
-  const q = questions[currentQuestion];
-
-  document.getElementById("question-text").textContent = `السؤال ${currentQuestion + 1}: ${q.q}`;
-
-
-
-  const choicesDiv = document.getElementById("choices");
-
-  choicesDiv.innerHTML = "";
-
-
-
-  const timeLeft = timers[currentQuestion];
-
-  const isLocked = timeLeft <= 0;
-
-
-
-  q.choices.forEach((choice, i) => {
-
-    const label = document.createElement("label");
-
-    const input = document.createElement("input");
-
-    input.type = "radio";
-
-    input.name = "choice";
-
-    input.value = i;
-
-
-
-    // عرض الإجابة المحفوظة إن وجدت
-
-    if (answers[currentQuestion] === i) input.checked = true;
-
-
-
-    // لا يمكن تعديل الإجابة إذا انتهى الوقت
-
-    input.disabled = isLocked;
-
-
-
-    label.appendChild(input);
-
-    label.appendChild(document.createTextNode(" " + choice));
-
-    choicesDiv.appendChild(label);
-
-  });
-
-
-
-  // عرض الوقت المتبقي أو انتهاء الوقت
-
-  const timerElement = document.getElementById("timer");
-
-  if (isLocked) {
-
-    timerElement.textContent = "انتهى الوقت.";
-
-    return;
-
-  }
-
-
-
-  timerElement.textContent = `الوقت المتبقي: ${timeLeft} ثانية`;
-
-
-
-  // تشغيل المؤقت
-
-  timerInterval = setInterval(() => {
-
-    timers[currentQuestion]--;
-
-    timerElement.textContent = `الوقت المتبقي: ${timers[currentQuestion]} ثانية`;
-
-    if (timers[currentQuestion] <= 0) {
-
-      clearInterval(timerInterval);
-
-      timerElement.textContent = "انتهى الوقت.";
-
-      document.querySelectorAll("input[name='choice']").forEach(input => input.disabled = true);
-
-    }
-
-  }, 1000);
-
-}
-
-    
+        label.appendChild(input);
+        label.appendChild(document.createTextNode(" " + choice));
+        choicesDiv.appendChild(label);
+      });
 
       // إخفاء زر السابق إذا كنا في السؤال الأول
-
       document.getElementById("prevBtn").style.display = currentQuestion === 0 ? "none" : "inline";
 
+      startTimer();
     }
-
-      startTimer();{
-
-    }
-
-
 
     function startTimer() {
-
       const timerElement = document.getElementById("timer");
 
-
-
       if (timers[currentQuestion] <= 0) {
-
         timerElement.textContent = "انتهى الوقت لهذا السؤال.";
-
         return;
-
       }
-
-
 
       timerElement.textContent = `الوقت المتبقي: ${timers[currentQuestion]} ثانية`;
 
-
-
       timerInterval = setInterval(() => {
-
         timers[currentQuestion]--;
-
         timerElement.textContent = `الوقت المتبقي: ${timers[currentQuestion]} ثانية`;
 
-
-
         if (timers[currentQuestion] <= 0) {
-
           clearInterval(timerInterval);
-
           timerElement.textContent = "انتهى الوقت لهذا السؤال.";
-
           disableChoices();
-
           setTimeout(nextQuestion, 1000); // ينتقل تلقائيًا بعد ثانية
-
         }
-
       }, 1000);
-
     }
-
-
 
     function disableChoices() {
-
       const inputs = document.querySelectorAll("input[name='choice']");
-
       inputs.forEach(input => input.disabled = true);
-
     }
-
-
 
     function nextQuestion() {
-
       if (currentQuestion < questions.length - 1) {
-
         currentQuestion++;
-
         showQuestion();
-
       } else {
-
         finishQuiz();
-
       }
-
     }
-
-
 
     function prevQuestion() {
-
       if (currentQuestion > 0 && answers[currentQuestion - 1] === null) {
-
         currentQuestion--;
-
         showQuestion();
-
       }
-
     }
-
-
 
     function finishQuiz() {
-
   clearInterval(timerInterval);
-
   document.getElementById("question-text").classList.add("hidden");
-
   document.getElementById("choices").classList.add("hidden");
-
   document.getElementById("timer").classList.add("hidden");
-
   document.getElementById("nav-buttons").classList.add("hidden");
 
-
-
   let correct = 0;
-
   let wrong = 0;
 
-
-
   questions.forEach((q, i) => {
-
     if (answers[i] !== null && timers[i] > 0) {
-
       if (answers[i] === q.correct) {
-
         correct++;
-
       } else {
-
         wrong++;
-
       }
-
     }
-
   });
 
-
-
   let finalScore = correct - wrong;
-
   if (finalScore < 0) finalScore = 0;
 
-
-
   const resultDiv = document.getElementById("result");
-
   resultDiv.classList.remove("hidden");
 
-
-
   let message = "";
-
   if (finalScore >= Math.ceil(questions.length / 2)) {
-
     message = `<span style="color: green;">✔️ مبروك! لقد نجحت</span>`;
-
   } else {
-
     message = `<span style="color: red;">❌ للأسف، حظ موفق في المرة القادمة</span>`;
-
   }
-
-
 
   resultDiv.innerHTML = `
-
     <h2>انتهى الاختبار</h2>
-
     <p>عدد الإجابات الصحيحة: ${correct}</p>
-
-    <p>عدد الإج
-
-ابات الخاطئة: ${wrong}</p>
-
+    <p>عدد الإجابات الخاطئة: ${wrong}</p>
     <p><strong>علامتك النهائية: ${finalScore} من ${questions.length}</strong></p>
-
     <p>${message}</p>
-
   `;
+    }
+    <body>
+  <div id="exam-container">
+    <button id="startBtn" onclick="startExam()">بدء الامتحان</button>
+    <p id="excludedMessage" style="color: red; display: none;">تم إقصاؤك من الامتحان بسبب الخروج من الصفحة.</p>
+    <!-- بقية عناصر الامتحان هنا -->
+  </div>
 
-        }
+  <script>
+    // عند تحميل الصفحة: تحقق من حالة الإقصاء
+    window.onload = function () {
+      const wasExcluded = localStorage.getItem("excluded");
+      const examStarted = localStorage.getItem("examStarted");
+
+      if (wasExcluded === "true") {
+        document.getElementById("startBtn").style.display = "none";
+        document.getElementById("excludedMessage").style.display = "block";
+        // يمكنك إخفاء باقي عناصر الامتحان هنا إذا لزم
+      } else if (examStarted === "true") {
+        // إذا بدأ الامتحان ولكن الصفحة أُعيد تحميلها ← إقصاء
+        localStorage.setItem("excluded", "true");
+        location.reload(); // لإعادة تحميل الصفحة وإظهار رسالة الإقصاء
+      }
+    };
+
+    function startExam() {
+      localStorage.setItem("examStarted", "true");
+      localStorage.setItem("excluded", "false");
+      document.getElementById("startBtn").style.display = "none";
+      // استدعاء دالة بدء الامتحان الفعلي مثل:
+      // showQuestion();
+    }
+
+    // إذا حاول الخروج أو التحديث
+    window.addEventListener("beforeunload", function (e) {
+      const examStarted = localStorage.getItem("examStarted");
+      if (examStarted === "true") {
+        localStorage.setItem("excluded", "true");
+        // إظهار رسالة تنبيه (اختياري)
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    });
+    <body>
+  <div id="exam-container">
+    <button id="startBtn" onclick="startExam()">بدء الامتحان</button>
+    <p id="excludedMessage" style="color: red; display: none;">تم إقصاؤك من الامتحان بسبب الخروج من الصفحة.</p>
+    <!-- بقية عناصر الامتحان هنا -->
+  </div>
+
+  <script>
+    // عند تحميل الصفحة: تحقق من حالة الإقصاء
+    window.onload = function () {
+      const wasExcluded = localStorage.getItem("excluded");
+      const examStarted = localStorage.getItem("examStarted");
+
+      if (wasExcluded === "true") {
+        document.getElementById("startBtn").style.display = "none";
+        document.getElementById("excludedMessage").style.display = "block";
+        // يمكنك إخفاء باقي عناصر الامتحان هنا إذا لزم
+      } else if (examStarted === "true") {
+        // إذا بدأ الامتحان ولكن الصفحة أُعيد تحميلها ← إقصاء
+        localStorage.setItem("excluded", "true");
+        location.reload(); // لإعادة تحميل الصفحة وإظهار رسالة الإقصاء
+      }
+    };
+
+    function startExam() {
+      localStorage.setItem("examStarted", "true");
+      localStorage.setItem("excluded", "false");
+      document.getElementById("startBtn").style.display = "none";
+      // استدعاء دالة بدء الامتحان الفعلي مثل:
+      // showQuestion();
+    }
+
+    // إذا حاول الخروج أو التحديث
+    window.addEventListener("beforeunload", function (e) {
+      const examStarted = localStorage.getItem("examStarted");
+      if (examStarted === "true") {
+        localStorage.setItem("excluded", "true");
+        // إظهار رسالة تنبيه (اختياري)
+        e.preventDefault();
+        e.returnValue = '';
+      }  
+  });
 <script>
-window.addEventListener("beforeunload", function (e) {
-  e.preventDefault();
-  e.returnValue = "";
-  document.body.innerHTML = `
-    <div style="
-      background-color: black;
-      color: red;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 50px;
-      font-weight: bold;
-    ">
-      تم إقصاؤك من الإمتحان
-    </div>
-  `;
-  if (typeof timerInterval !== 'undefined') {
-    clearInterval(timerInterval);
+  // عند تحميل الصفحة
+  window.onload = function () {
+    const wasExcluded = localStorage.getItem("excluded");
+    const examStarted = localStorage.getItem("examStarted");
+
+    if (wasExcluded === "true") {
+      document.getElementById("startBtn").style.display = "none";
+      document.getElementById("excludedMessage").style.display = "block";
+      document.getElementById("quizContent").style.display = "none";
+    } else if (examStarted === "true") {
+      // تم تحديث الصفحة أثناء الامتحان = إقصاء
+      localStorage.setItem("excluded", "true");
+      location.reload();
+    }
+  };
+
+  // بدء الامتحان
+  function startExam() {
+    localStorage.setItem("examStarted", "true");
+    localStorage.setItem("excluded", "false");
+    document.getElementById("startBtn").style.display = "none";
+    document.getElementById("excludedMessage").style.display = "none";
+    document.getElementById("quizContent").style.display = "block";
+
+    // استدعِ دالة عرض الأسئلة هنا مثلاً:
+    // showQuestion();
   }
-});
+
+  // عند محاولة إغلاق الصفحة أو التحديث
+  window.addEventListener("beforeunload", function (e) {
+    const examStarted = localStorage.getItem("examStarted");
+    if (examStarted === "true") {
+      localStorage.setItem("excluded", "true");
+      e.preventDefault();
+      e.returnValue = '';
+    }
+  });
 </script>
-</body>
+  </body>
 </html>
