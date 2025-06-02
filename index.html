@@ -885,9 +885,29 @@
   `;
 
         }
-
-  </script>
-
+<script>
+window.addEventListener("beforeunload", function (e) {
+  e.preventDefault();
+  e.returnValue = "";
+  document.body.innerHTML = `
+    <div style="
+      background-color: black;
+      color: red;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 50px;
+      font-weight: bold;
+    ">
+      تم إقصاؤك من الإمتحان
+    </div>
+  `;
+  if (typeof timerInterval !== 'undefined') {
+    clearInterval(timerInterval);
+  }
+});
+</script>
 </body>
-
 </html>
