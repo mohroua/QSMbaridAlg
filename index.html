@@ -291,6 +291,7 @@ body {
     let answers = Array(questions.length).fill(null);
     let timers = Array(questions.length).fill(120); // 120 ثانية
     let timerInterval;
+    
     function showQuestion() {
       clearInterval(timerInterval);
 
@@ -309,10 +310,11 @@ body {
         if (answers[currentQuestion] === index) input.checked = true;
 
         input.addEventListener("change", () => {
-          if (answers[currentQuestion] === null) {
-            answers[currentQuestion] = index;
-            disableChoices(); // غلق الاختيارات بعد الإجابة
+          if (currentQuestion > 0) {
+  currentQuestion--;
+  showQuestion();
           }
+          
         });
 
         label.appendChild(input);
