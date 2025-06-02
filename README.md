@@ -588,109 +588,97 @@ body {
 
 function showQuestion() {
 
-  clearInterval(timerInterval);
+  clearInterval(timerInterval);
 
 
 
-  const q = questions[currentQuestion];
+  const q = questions[currentQuestion];
 
-  document.getElementById("question-text").textContent = `السؤال ${currentQuestion + 1}: ${q.q}`;
-
-
-
-  const choicesDiv = document.getElementById("choices");
-
-  choicesDiv.innerHTML = "";
+  document.getElementById("question-text").textContent = `السؤال ${currentQuestion + 1}: ${q.q}`;
 
 
 
-  const timeLeft = timers[currentQuestion];
+  const choicesDiv = document.getElementById("choices");
 
-  const isLocked = timeLeft <= 0;
-
-
-
-  q.choices.forEach((choice, i) => {
-
-    const label = document.createElement("label");
-
-    const input = document.createElement("input");
-
-    input.type = "radio";
-
-    input.name = "choice";
-
-    input.value = i;
+  choicesDiv.innerHTML = "";
 
 
 
-    // عرض الإجابة المحفوظة إن وجدت
+  const timeLeft = timers[currentQuestion];
 
-    if (answers[currentQuestion] === i) input.checked = true;
-
-
-
-    // لا يمكن تعديل الإجابة إذا انتهى الوقت
-
-    input.disabled = isLocked;
+  const isLocked = timeLeft <= 0;
 
 
 
-    label.appendChild(input);
+  q.choices.forEach((choice, i) => {
 
-    label.appendChild(document.createTextNode(" " + choice));
+    const label = document.createElement("label");
 
-    choicesDiv.appendChild(label);
+    const input = document.createElement("input");
 
-  });
+    input.type = "radio";
 
+    input.name = "choice";
 
+    input.value = i;
 
-  // عرض الوقت المتبقي أو انتهاء الوقت
+    if (answers[currentQuestion] === i) input.checked = true;
 
-  const timerElement = document.getElementById("timer");
+    input.disabled = isLocked;
 
-  if (isLocked) {
+    label.appendChild(input);
 
-    timerElement.textContent = "انتهى الوقت.";
+    label.appendChild(document.createTextNode(" " + choice));
 
-    return;
+    choicesDiv.appendChild(label);
 
-  }
-
-
-
-  timerElement.textContent = `الوقت المتبقي: ${timeLeft} ثانية`;
+  });
 
 
 
-  // تشغيل المؤقت
+  const timerElement = document.getElementById("timer");
 
-  timerInterval = setInterval(() => {
+  if (isLocked) {
 
-    timers[currentQuestion]--;
+    timerElement.textContent = "انتهى الوقت.";
 
-    timerElement.textContent = `الوقت المتبقي: ${timers[currentQuestion]} ثانية`;
+  } else {
 
-    if (timers[currentQuestion] <= 0) {
+    timerElement.textContent = `الوقت المتبقي: ${timeLeft} ثانية`;
 
-      clearInterval(timerInterval);
 
-      timerElement.textContent = "انتهى الوقت.";
 
-      document.querySelectorAll("input[name='choice']").forEach(input => input.disabled = true);
+    timerInterval = setInterval(() => {
 
-    }
+      timers[currentQuestion]--;
 
-  }, 1000);
+      timerElement.textContent = `الوقت المتبقي: ${timers[currentQuestion]} ثانية`;
+
+
+
+      if (timers[currentQuestion] <= 0) {
+
+        clearInterval(timerInterval);
+
+        timerElement.textContent = "انتهى الوقت.";
+
+        disableChoices();
+
+        setTimeout(nextQuestion, 1000);
+
+      }
+
+    }, 1000);
+
+  }
+
+
+
+  // إخفاء زر السابق إذا كنا في السؤال الأول
+
+  document.getElementById("prevBtn").style.display = currentQuestion === 0 ? "none" : "inline";
 
 }
-
-    
-
-      // إخفاء زر السابق إذا كنا في السؤال الأول
-
-      document.getElementById("prevBtn").style.display = currentQuestion === 0 ? "none" : "inline";
 
 
 
