@@ -89,23 +89,7 @@
       padding: 30px;
 
 
-
     }
-
-body {
-
-  background-color: #f9f9f9;
-
-  font-family: 'Arial', sans-serif;
-
-  text-align: center;
-
-  padding: 50px;
-
-  margin: 0;
-
-}
-
 
 
 .box {
@@ -722,9 +706,9 @@ body {
 
       document.getElementById("prevBtn").style.display = currentQuestion === 0 ? "none" : "inline";
 
+    }
 
-
-      startTimer();
+      startTimer();{
 
     }
 
