@@ -29,7 +29,6 @@
 
 
 
-
 <head>
 
 
@@ -38,24 +37,8 @@
 
 
 
-
-
-
-
-
-
-
-
   <meta charset="UTF-8">
-
-
-
-
-
-
-
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
 
@@ -70,14 +53,6 @@
 
 
 
-
-
-
-
-
-
-
-
   <style>
 
 
@@ -85,44 +60,23 @@
 
 
 
-
-
-
-
-
-
-
-
-
-    body {
-
-
-
-
-
-
-
+body {
   font-family: Arial, sans-serif;
-
-
-
-
-
-
-
   background-color: #f9f9f9;
-
-  margin: 0;
-
-  padding: 0;
-
-  box-sizing: border-box;
-
-
-
-
-
+  direction: rtl;
+  text-align: center;
+  width: 100%;
 }
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+
+
+    
 
 
 
