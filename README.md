@@ -118,7 +118,69 @@
 
     <form id="quiz-form">
 
-      addQuestion("ما هي الوثائق المطلوبة لفتح حساب بريدي جاري؟", ["نسخة من شهادة الميلاد", "الوثيقة CH1 + نسخة من بطاقة الهوية", "بطاقة إقامة", "شهادة عمل"], 1);
+      <script>
+
+  function addQuestion(questionText, options, correctIndex) {
+
+    const questionBlock = document.createElement("div");
+
+    questionBlock.className = "question-block";
+
+    questionBlock.dataset.correct = correctIndex;
+
+
+
+    const questionDiv = document.createElement("div");
+
+    questionDiv.className = "question";
+
+    questionDiv.textContent = questionText;
+
+    questionBlock.appendChild(questionDiv);
+
+
+
+    const optionsDiv = document.createElement("div");
+
+    optionsDiv.className = "options";
+
+
+
+    options.forEach((option, i) => {
+
+      const label = document.createElement("label");
+
+      const input = document.createElement("input");
+
+      input.type = "radio";
+
+      input.name = `q${document.querySelectorAll(".question-block").length}`;
+
+      input.value = i;
+
+      label.appendChild(input);
+
+      label.appendChild(document.createTextNode(" " + option));
+
+      optionsDiv.appendChild(label);
+
+    });
+
+
+
+    questionBlock.appendChild(optionsDiv);
+
+    document.getElementById("quiz-form").appendChild(questionBlock);
+
+  }
+
+
+
+  // بعد تعريفها يمكنك استخدامها:
+
+  document.addEventListener("DOMContentLoaded", () => {
+
+    addQuestion("ما هي الوثائق المطلوبة لفتح حساب بريدي جاري؟", ["نسخة من شهادة الميلاد", "الوثيقة CH1 + نسخة من بطاقة الهوية", "بطاقة إقامة", "شهادة عمل"], 1);
 
     addQuestion("ما هو الحد الأقصى اليومي للتحويل من حساب إلى حساب عبر الصراف؟", ["20,000 دج", "30,000 دج", "50,000 دج", "100,000 دج"], 2);
 
@@ -229,6 +291,14 @@
     addQuestion("كيف يمكن تطوير الكفاءة المهنية؟", ["التكوين المستمر", "الراحة فقط", "العمل الروتيني", "تجاهل التعليمات"], 0);
 
       <!-- سيتم إدخال الأسئلة هنا يدوياً -->
+
+  });
+
+      </script>
+
+      
+
+      
 
     </form>
 
