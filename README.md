@@ -252,7 +252,7 @@ body {
 
 
 
-      padding: 20px;
+      padding: 40px;
 
 
 
@@ -264,7 +264,7 @@ body {
 
 
 
-      font-size: 20px;
+      font-size: 40px;
 
 
 
@@ -275,38 +275,6 @@ body {
     }
 
 
-
-    .question-container {
-
-  text-align: center; /* لجعل السؤال في الوسط */
-
-  direction: rtl;     /* لأن النص عربي */
-
-}
-
-
-
-.question-text {
-
-  font-weight: bold;
-
-  margin-bottom: 20px;
-
-  font-size: 20px;
-
-}
-
-
-
-.choices {
-
-  display: inline-block;
-
-  text-align: right; /* لمحاذاة الخيارات إلى اليمين */
-
-}
-
-    
 
     label {
 
@@ -618,61 +586,107 @@ body {
 
 
 
-    function showQuestion() {
+function showQuestion() {
 
-      clearInterval(timerInterval);
-
-      const q = questions[currentQuestion];
-
-      document.getElementById("question-text").textContent = `السؤال ${currentQuestion + 1}: ${q.q}`;
-
-      const choicesDiv = document.getElementById("choices");
-
-      choicesDiv.innerHTML = "";
+  clearInterval(timerInterval);
 
 
 
-      q.choices.forEach((choice, index) => {
+  const q = questions[currentQuestion];
 
-        const label = document.createElement("label");
-
-        const input = document.createElement("input");
-
-        input.type = "radio";
-
-        input.name = "choice";
-
-        input.value = index;
-
-        input.disabled = (timers[currentQuestion] <= 0 || answers[currentQuestion] !== null);
-
-        if (answers[currentQuestion] === index) input.checked = true;
+  document.getElementById("question-text").textContent = `السؤال ${currentQuestion + 1}: ${q.q}`;
 
 
 
-        input.addEventListener("change", () => {
+  const choicesDiv = document.getElementById("choices");
 
-          if (answers[currentQuestion] === null) {
-
-            answers[currentQuestion] = index;
-
-            disableChoices(); // غلق الاختيارات بعد الإجابة
-
-          }
-
-        });
+  choicesDiv.innerHTML = "";
 
 
 
-        label.appendChild(input);
+  const timeLeft = timers[currentQuestion];
 
-        label.appendChild(document.createTextNode(" " + choice));
-
-        choicesDiv.appendChild(label);
-
-      });
+  const isLocked = timeLeft <= 0;
 
 
+
+  q.choices.forEach((choice, i) => {
+
+    const label = document.createElement("label");
+
+    const input = document.createElement("input");
+
+    input.type = "radio";
+
+    input.name = "choice";
+
+    input.value = i;
+
+
+
+    // عرض الإجابة المحفوظة إن وجدت
+
+    if (answers[currentQuestion] === i) input.checked = true;
+
+
+
+    // لا يمكن تعديل الإجابة إذا انتهى الوقت
+
+    input.disabled = isLocked;
+
+
+
+    label.appendChild(input);
+
+    label.appendChild(document.createTextNode(" " + choice));
+
+    choicesDiv.appendChild(label);
+
+  });
+
+
+
+  // عرض الوقت المتبقي أو انتهاء الوقت
+
+  const timerElement = document.getElementById("timer");
+
+  if (isLocked) {
+
+    timerElement.textContent = "انتهى الوقت.";
+
+    return;
+
+  }
+
+
+
+  timerElement.textContent = `الوقت المتبقي: ${timeLeft} ثانية`;
+
+
+
+  // تشغيل المؤقت
+
+  timerInterval = setInterval(() => {
+
+    timers[currentQuestion]--;
+
+    timerElement.textContent = `الوقت المتبقي: ${timers[currentQuestion]} ثانية`;
+
+    if (timers[currentQuestion] <= 0) {
+
+      clearInterval(timerInterval);
+
+      timerElement.textContent = "انتهى الوقت.";
+
+      document.querySelectorAll("input[name='choice']").forEach(input => input.disabled = true);
+
+    }
+
+  }, 1000);
+
+}
+
+    
 
       // إخفاء زر السابق إذا كنا في السؤال الأول
 
