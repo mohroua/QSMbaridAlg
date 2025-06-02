@@ -26,22 +26,33 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
+  padding: 10px 20px;
   background-color: #fff;
   border-bottom: 1px solid #ccc;
-  direction: rtl;
 }
 
-.header-title {
-  font-size: 22px;
+.header {
+  display: flex;
+  justify-content: center; /* توسيط المحتوى الكامل */
+  padding: 10px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* المسافة المتوازنة بين النص والشعار */
+}
+
+.header-content span {
+  font-size: 20px;
   font-weight: bold;
-  color: #333;
 }
 
-.header-logo {
-  height: 50px;
+.header-content img {
+  height: 40px;
 }
-
 
 
     .content {
@@ -167,6 +178,7 @@
       margin-top: 15px;
 
     }
+    
       
   </style>
 
@@ -182,10 +194,6 @@
       <div class="center-name">مركز الامتحان</div>
     </div>
 
-    <!-- زر الإغلاق -->
-    <button class="close-btn" onclick="window.close()">×</button>
-  </div>
-  
   <div class="content" id="welcome-section">
     <h2 id="username">مرحبا المترشح</h2>
     <div class="box">
