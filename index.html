@@ -205,6 +205,21 @@ body {
   </div>
 
   <script>
+    window.addEventListener("beforeunload", function (e) {
+  // منع الخروج بدون رسالة في بعض المتصفحات
+  e.preventDefault();
+  e.returnValue = "";
+
+  // عرض رسالة إقصاء واضحة داخل الصفحة
+  document.body.innerHTML = `
+    <div style="background-color: black; color: red; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 40px; font-weight: bold;">
+      تم إقصاؤك من الإمتحان
+    </div>
+  `;
+
+  // إيقاف كل شيء آخر
+  clearInterval(timerInterval);
+});
     // التقاط الاسم من الرابط
     function getNameFromURL() {
       const params = new URLSearchParams(window.location.search);
