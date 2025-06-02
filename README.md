@@ -3818,7 +3818,19 @@ function finishQuiz() {
 
 
 
-
+<footer style="
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+  background-color: transparent;
+  padding: 5px 0;
+  direction: rtl;
+">
+تم الإنشاء بواسطة: حريشة يونس
+</footer>
 
 
 
