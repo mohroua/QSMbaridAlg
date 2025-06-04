@@ -8,7 +8,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>مركز الامتحان - بريد الجزائر</title>
   
-  <title>مركز الامتحان - بريد الجزائر</title>
+  <!-- 👇 هنا تضع كود JavaScript -->
+  <script>
+    // عند محاولة مغادرة الصفحة
+    window.addEventListener("beforeunload", function (e) {
+      localStorage.setItem("excluded", "true");
+      e.preventDefault();
+      e.returnValue = '';
+    });
+
+    // عند تحميل الصفحة، التحقق هل تم إقصاؤك
+    window.addEventListener("load", function () {
+      if (localStorage.getItem("excluded") === "true") {
+        document.body.innerHTML = "<h1 style='color: red; text-align: center;'>لقد تم إقصاؤك من الامتحان!</h1>";
+      }
+    });
+  </script>
 
   <style>
 
