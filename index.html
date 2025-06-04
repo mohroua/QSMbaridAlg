@@ -6,9 +6,9 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>مركز الامتحان - بريد الجزائر</title>
+  <title>مركز الامتحان - بريد الجزائر</title> 
   <script>
-    // 👇 اختر الوضع هنا: "training" أو "official"
+  // 👇 اختر الوضع هنا: "training" أو "official"
     const mode = "training";
 
     window.addEventListener("beforeunload", function (e) {
@@ -28,16 +28,15 @@
               <button id="retryButton" style="padding: 10px 20px;">إعادة المحاولة</button>
             </div>
           `;
-          // إعادة ربط الزر بعد إنشاءه
-          document.addEventListener("DOMContentLoaded", function () {
-            const btn = document.getElementById("retryButton");
-            if (btn) {
-              btn.addEventListener("click", function () {
-                localStorage.removeItem("excluded");
-                location.href = location.pathname; // إعادة تحميل الصفحة
-              });
-            }
-          });
+
+          // ربط الحدث مباشرة بعد التعديل
+          setTimeout(() => {
+            document.getElementById("retryButton").addEventListener("click", function () {
+              localStorage.removeItem("excluded");
+              location.href = location.pathname; // إعادة تحميل الصفحة
+            });
+          }, 0);
+
         } else if (mode === "official") {
           // الوضع الصارم: لا يُسمح بالدخول مرة أخرى
           document.body.innerHTML = `
@@ -47,7 +46,7 @@
         }
       }
     });
-</script>
+  </script>
 <style>
 
     body {
