@@ -18,25 +18,36 @@
 
   
 
-  <title>مركز الامتحان - بريد الجزائر</title>
-<!-- كود الإقصاء عند تحديث الصفحة أو الخروج -->
   <script>
-    // عند محاولة مغادرة الصفحة
-    window.addEventListener("beforeunload", function (e) {
-      localStorage.setItem("excluded", "true");
-      e.preventDefault();
-      e.returnValue = '';
-    });
+  // 👇 اختر الوضع هنا: "training" أو "official"
+  const mode = "training";
 
-    // عند تحميل الصفحة، التحقق هل تم إقصاؤك
-    window.addEventListener("load", function () {
-      if (localStorage.getItem("excluded") === "true") {
-        document.body.innerHTML = "<h1 style='color: red; text-align: center; margin-top: 50px;'>لقد تم إقصاؤك من الامتحان!</h1>";
+  window.addEventListener("beforeunload", function (e) {
+    localStorage.setItem("excluded", "true");
+    e.preventDefault();
+    e.returnValue = '';
+  });
+
+  window.addEventListener("load", function () {
+    if (localStorage.getItem("excluded") === "true") {
+      if (mode === "training") {
+        // وضع التدريب: يُسمح بإعادة المحاولة
+        document.body.innerHTML = `
+          <h1 style="color: red; text-align: center; margin-top: 100px;">لقد تم إقصاؤك من الامتحان!</h1>
+          <p style="text-align: center;">هذا اختبار تجريبي، يمكنك إعادة المحاولة.</p>
+          <div style="text-align: center; margin-top: 30px;">
+            <button onclick="localStorage.removeItem('excluded'); location.reload();" style="padding: 10px 20px;">إعادة المحاولة</button>
+          </div>
+        `;
+      } else if (mode === "official") {
+        // الوضع الصارم: لا يُسمح بالدخول مرة أخرى
+        document.body.innerHTML = `
+          <h1 style="color: red; text-align: center; margin-top: 100px;">لقد تم إقصاؤك من الامتحان!</h1>
+          <p style="text-align: center;">لا يمكنك إعادة الدخول مرة أخرى.</p>
+        `;
       }
-    });
-  </script>
-  
-
+    }
+  });
 
   <style>
 
