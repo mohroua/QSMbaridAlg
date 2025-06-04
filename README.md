@@ -19,7 +19,23 @@
   
 
   <title>مركز الامتحان - بريد الجزائر</title>
+<!-- كود الإقصاء عند تحديث الصفحة أو الخروج -->
+  <script>
+    // عند محاولة مغادرة الصفحة
+    window.addEventListener("beforeunload", function (e) {
+      localStorage.setItem("excluded", "true");
+      e.preventDefault();
+      e.returnValue = '';
+    });
 
+    // عند تحميل الصفحة، التحقق هل تم إقصاؤك
+    window.addEventListener("load", function () {
+      if (localStorage.getItem("excluded") === "true") {
+        document.body.innerHTML = "<h1 style='color: red; text-align: center; margin-top: 50px;'>لقد تم إقصاؤك من الامتحان!</h1>";
+      }
+    });
+  </script>
+  
 
 
   <style>
